@@ -15,7 +15,54 @@ include Make_GIT
 default: clean arch tags
 
 :cd %:h|:update|:only|:terminal make links
-links:  #-------------------- LINK ------------------------------------ TARGET
+################ GITHUB {{{
+:}!!find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'
+:}!!find . -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|csproj|suo)\>' | sed -e 's/^\.\/*//'
+
+:cd %:h|:update|:only|:terminal make GITHUB
+ GITHUB:
+	@(echo "[$@]";\
+	   FILES=`find .  -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|suo)\>' | sed -e 's/^\.\/*//' -e 's/ /\n/'`;\
+	   LINKS=`find R* -type l | sed -e 's/^\.\/*//' -e 's/ /\n/'`;\
+	\
+	LINKS=`echo "$$LINKS" | grep -v '.cs'`;\
+	LINKS_COUNT=`echo "$$LINKS" | wc -l`;\
+	echo "$$LINKS_COUNT LINK files";\
+	echo "$$LINKS";\
+	\
+	FILES_MISC=`echo "$$FILES" | grep -v '.cs'`;\
+	FILES_MISC_COUNT=`echo "$$FILES_MISC" | wc -l`;\
+	echo "$$FILES_MISC_COUNT MISC files";\
+	echo "$$FILES_MISC";\
+	\
+	FILES_CS=`echo "$$FILES" | grep    '.cs'`;\
+	FILES_CS_COUNT=`echo "$$FILES_CS" | wc -l`;\
+	echo "$$FILES_CS_COUNT cs files";\
+	echo "$$FILES_CS";\
+	\
+	echo "ARCHIVE";\
+	    DATE=`date '+%y%m%d'`;\
+	    ARCHIVE="$(APPDIR)_$$DATE.rar";\
+            rm -f                    ../GITHUB/$$ARCHIVE;\
+	    : echo $(RAR)   a $(RAS) ../GITHUB/$$ARCHIVE $$FILES;\
+	    $(RAR)   a $(RAS)        ../GITHUB/$$ARCHIVE $$FILES;\
+	    $(LS)         -lt        ../GITHUB/*.rar | head -2;\
+	    $(RAR)         l         ../GITHUB/$$ARCHIVE;\
+	\
+	echo "[$@ DONE]";\
+	)
+
+:set columns=999|:only|vert terminal ++cols=150 make git_add_folders
+:                                               make git_add_folders
+ gad  git_add_folders:
+	@(echo "[$@]";\
+	DIRS=`find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'`;\
+	echo git add $$DIRS;\
+	:    git add $$DIRS;\
+	)
+
+#}}}
+links:  #-------------------- LINK ------------------------------------ TARGET {{{
 	(\
             cd RTabs;\
             cmd /c mklink /J 'RTabsDesigner\Util'                       'Util';\
@@ -28,6 +75,7 @@ links:  #-------------------- LINK ------------------------------------ TARGET
             cmd /c mklink /H 'RTabsDesigner\src\MainForm.Designer.cs'   'RTabs\src\MainForm.Designer.cs';\
 	)
 
+# }}}
 arch:                                                                     #{{{
 	@(\
             echo "cd TOP [$(TOP)]";\
