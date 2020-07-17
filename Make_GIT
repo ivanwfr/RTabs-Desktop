@@ -1,0 +1,232 @@
+###########################################################################################################
+### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Make_GIT ### SCRIPT_TAG (200717:19h:59) #############################
+###########################################################################################################
+define COMMIT_MESSAGE
+Git init RTabs:\
+ADDING FOLDERS
+
+endef
+default: gs
+
+######################## 
+:update|:only|vert terminal make git_status
+:update|:only|vert terminal make git_reset
+:update|:only|vert terminal make git_log
+:update|:only|vert terminal make git_log_p_2
+:update|:only|vert terminal make git_log_pretty
+:update|:only|vert terminal make git_log_stat
+:update|:only|vert terminal make git_add
+:update|:only|vert terminal make git_commit_all_message
+:update|:only|vert terminal make git_diff_cached
+:update|:only|vert terminal make git_git_diff
+:update|:only|vert terminal make git_git_push_f
+######################## 
+
+################ STATUS {{{
+gs git_status:
+	@echo [$@]; git status
+
+#}}}
+################ RESET (to unstage) {{{
+gr git_reset:
+	@echo [$@]; git reset HEAD
+
+#}}}
+################ LOG {{{
+:make gl
+gl git_log:
+	@echo [$@]; git log
+
+:make glp
+glp git_log_p_2:
+	@echo [$@]; git log -p -2
+
+:make gg
+gg git_log_pretty:
+	@echo [$@]; git log --pretty=format:"%hs %s %cr" --graph
+
+:make gls
+gls git_log_stat:
+	@echo [$@]; git log --stat
+
+#}}}
+################ ADD {{{
+:}!!find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'
+:}!!find . -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|csproj|suo)\>' | sed -e 's/^\.\/*//'
+
+:cd %:h|:update|:only|:terminal make git_add_files
+ gaf  git_add_files:
+	@(echo "[$@]";\
+	   FILES=`find .  -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|suo)\>' | sed -e 's/^\.\/*//' -e 's/ /\n/'`;\
+	   LINKS=`find R* -type l | sed -e 's/^\.\/*//' -e 's/ /\n/'`;\
+	\
+	LINKS=`echo "$$LINKS" | grep -v '.cs'`;\
+	LINKS_COUNT=`echo "$$LINKS" | wc -l`;\
+	echo "$$LINKS_COUNT LINK files";\
+	echo "$$LINKS";\
+	\
+	FILES_MISC=`echo "$$FILES" | grep -v '.cs'`;\
+	FILES_MISC_COUNT=`echo "$$FILES_MISC" | wc -l`;\
+	echo "$$FILES_MISC_COUNT MISC files";\
+	echo "$$FILES_MISC";\
+	\
+	FILES_CS=`echo "$$FILES" | grep    '.cs'`;\
+	FILES_CS_COUNT=`echo "$$FILES_CS" | wc -l`;\
+	echo "$$FILES_CS_COUNT cs files";\
+	echo "$$FILES_CS";\
+	\
+	echo "ARCHIVE";\
+	    DATE=`date '+%y%m%d'`;\
+	    ARCHIVE="$(APPDIR)_$$DATE.rar";\
+            rm -f                    ../GITHUB/$$ARCHIVE;\
+	    : echo $(RAR)   a $(RAS) ../GITHUB/$$ARCHIVE $$FILES;\
+	    $(RAR)   a $(RAS)        ../GITHUB/$$ARCHIVE $$FILES;\
+	    $(LS)         -lt        ../GITHUB/*.rar | head -2;\
+	    $(RAR)         l         ../GITHUB/$$ARCHIVE;\
+	\
+	echo "[$@ DONE]";\
+	)
+
+:set columns=999|:only|vert terminal ++cols=150 make git_add_folders
+:                                               make git_add_folders
+ gad  git_add_folders:
+	@(echo "[$@]";\
+	DIRS=`find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'`;\
+	echo git add $$DIRS;\
+	:    git add $$DIRS;\
+	)
+
+#}}}
+################ COMMIT {{{
+:make gca
+gca git_commit_all_message:
+	@echo "[$@]"; git commit -a -m "$(COMMIT_MESSAGE)"
+
+#}}}
+################ DIFF {{{
+:make gdc
+gdc git_diff_cached:
+	@echo [$@]; git diff --cached
+
+:make gd
+gd git_git_diff:
+	@echo [$@]; git diff
+#}}}
+################ PUSH {{{
+:make gp
+gp git_git_push_f:
+	@echo [$@]; git push -f
+
+#}}}
+######################## 
+# GIT init RTabs {{{
+:!start explorer "https://kbroman.org/github_tutorial/pages/init.html"
+:term git init
+:term git add RTabs
+:term git commit -m "initial project version"
+:term git config receive.denyCurrentBranch ignore
+
+#}}}
+# GIT commands {{{
+# git_help:
+# 	git --help
+# git_help_config:
+# 	git --help config
+# git_config_list:
+#	git config --list
+
+#}}}
+#GOOGLE CLOUD: {{{
+:cd B:/Program\ Files\ (x86)/Google/Cloud\ SDK/
+:cd C:\LOCAL\DATA\ANDROID\PROJECTS\RTabsExtension
+:!start explorer "https://cloud.google.com/sdk/docs/"
+:!start explorer "https://cloud.google.com/sdk/auth_success#top_of_page"
+:!start explorer "https://console.cloud.google.com/code/develop/browse/RTabsExtension/master?project=rtabsextension"
+	# {{{
+	# Output folder: B:\Program Files (x86)\Google\Cloud SDK
+	# Downloading Google Cloud SDK core.
+	# Extracting Google Cloud SDK core.
+	# Create Google Cloud SDK bat file: B:\Program Files (x86)\Google\Cloud SDK\cloud_env.bat
+	# Installing components.
+	# find: '/i': No such file or directory
+	# Welcome to the Google Cloud SDK!
+	# Your current Cloud SDK version is: 183.0.0
+	# Installing components from version: 183.0.0
+	# +----------------------------------------------------------------------------+
+	# |                    These components will be installed.                     |
+	# +-----------------------------------------------------+------------+---------+
+	# |                         Name                        |  Version   |   Size  |
+	# +-----------------------------------------------------+------------+---------+
+	# | BigQuery Command Line Tool                          |     2.0.27 | < 1 MiB |
+	# | BigQuery Command Line Tool (Platform Specific)      |     2.0.26 | < 1 MiB |
+	# | Cloud SDK Core Libraries (Platform Specific)        | 2017.10.30 | < 1 MiB |
+	# | Cloud Storage Command Line Tool                     |       4.28 | 3.3 MiB |
+	# | Cloud Storage Command Line Tool (Platform Specific) |       4.27 | < 1 MiB |
+	# | Cloud Tools for PowerShell                          |    1.0.1.0 | 8.7 MiB |
+	# | Cloud Tools for PowerShell                          |            |         |
+	# | Default set of gcloud commands                      |            |         |
+	# | Windows command line ssh tools                      |            |         |
+	# | Windows command line ssh tools                      | 2017.09.15 | 1.8 MiB |
+	# | gcloud cli dependencies                             | 2017.10.20 | 1.0 MiB |
+	# +-----------------------------------------------------+------------+---------+
+	# For the latest full release notes, please visit:
+	#   https://cloud.google.com/sdk/release_notes
+	# #============================================================#
+	# #= Creating update staging area                             =#
+	# #============================================================#
+	# #= Installing: BigQuery Command Line Tool                   =#
+	# #============================================================#
+	# #= Installing: BigQuery Command Line Tool (Platform Spec... =#
+	# #============================================================#
+	# #= Installing: Cloud SDK Core Libraries (Platform Specific) =#
+	# #============================================================#
+	# #= Installing: Cloud Storage Command Line Tool              =#
+	# #============================================================#
+	# #= Installing: Cloud Storage Command Line Tool (Platform... =#
+	# #============================================================#
+	# #= Installing: Cloud Tools for PowerShell                   =#
+	# #============================================================#
+	# #= Installing: Cloud Tools for PowerShell                   =#
+	# #============================================================#
+	# #= Installing: Default set of gcloud commands               =#
+	# #============================================================#
+	# #= Installing: Windows command line ssh tools               =#
+	# #============================================================#
+	# #= Installing: Windows command line ssh tools               =#
+	# #============================================================#
+	# #= Installing: gcloud cli dependencies                      =#
+	# #============================================================#
+	# #= Creating backup and activating new installation          =#
+	# #============================================================#
+	# Performing post processing steps...
+	# ....................................................................................................................................................done.
+	# Update done!
+	# This will install all the core command line tools necessary for working with
+	# the Google Cloud Platform.
+	# For more information on how to get started, please visit:
+	#   https://cloud.google.com/sdk/docs/quickstarts
+	# Google Cloud SDK has been installed!
+	#}}}
+
+# git remote add google https://source.developers.google.com/p/rtabsextension/r/RTabsExtension
+# git remame     google https://source.developers.google.com/p/rtabsextension/r/RTabsExtension
+
+#}}}
+#{{{
+# :cd ~/
+# :pwd
+# :cd %:h
+# :pwd
+# :new                   ~/REPO
+# 
+# :!mkdir                ~/REPO/RTabsExtension
+# :new                   ~/REPO/RTabsExtension
+# 
+:!git remote add local ~/REPO/RTabsExtension
+# }!!git remote -v
+# local	~/REPO/RTabsExtension (fetch)
+# local	~/REPO/RTabsExtension (push)
+# local	~/REPO/RTabsExtension (push)
+#}}}
+
+# vim: noet ts=8 sw=8
