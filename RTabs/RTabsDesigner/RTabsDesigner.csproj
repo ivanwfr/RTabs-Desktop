@@ -42,7 +42,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\DATA\ANDROID\PROJECTS\DISTRIBUTE\windows\RTabsDesigner\</OutputPath>
+    <OutputPath>..\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>

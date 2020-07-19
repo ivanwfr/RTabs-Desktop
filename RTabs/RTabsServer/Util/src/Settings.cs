@@ -17,7 +17,7 @@ namespace Util
 {
     public class Settings
     {
-        private static string   Settings_TAG = "Settings (200715:21h:07)";
+        private static string   Settings_TAG = "Settings (200719:01h:43)";
 
         public static bool UseMutex = false;
 
@@ -42,7 +42,8 @@ namespace Util
 
         // -----------------------------------  file://PROFILES_DIR/DEV/AZ-ABS-00-0100-010011_rev00.html
         public static string PROFILES_DIR           = "PROFILES_DIR";
-        public static string PROFILES_DIR_PATH      = "C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Util/RTabs_Profiles";
+        public static string PROFILES_DIR_PATH      =                                        "RTabs_Profiles";
+        // ----------------g PROFILES_DIR_PATH      = "C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Util/RTabs_Profiles";
         // -----------------------------------  file://C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Util/RTabs_Profiles/DEV/index.html
 
         // PROCESS
@@ -255,7 +256,12 @@ namespace Util
         // }}}
 
         // PROFILE {{{
-        // [MyDocuments.RTabs] [Profiles] {{{
+        // [RTabs_Profiles] [MyDocuments.RTabs] [Profiles] {{{
+
+        public static string RTabs_Profiles
+            ="RTabs_Profiles"
+            ;
+
         public static string MyDocumemntsFolder
             = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments )
             + Path.DirectorySeparatorChar +"RTabs"
@@ -294,10 +300,36 @@ namespace Util
             {
                 Log("Get_Profiles_Dict:");
 
-                // CREATE PROFILE FOLDER
-                if(!System.IO.Directory.Exists(Settings.ProfilesFolder) ) {
+                // CREATE AND POPULATE PROFILE FOLDER
+                if(!System.IO.Directory.Exists(Settings.ProfilesFolder) )
+                {
                     Log("...CreateDirectory ProfilesFolder=["+Settings.ProfilesFolder+"]");
                     System.IO.Directory.CreateDirectory( Settings.ProfilesFolder );
+
+                    Log("...COPY DEFAULT PROFILES FROM ["+Settings.RTabs_Profiles+"] to ["+Settings.ProfilesFolder+"]");
+
+                    string profile_to_load = "";
+                    string[] fileList = Directory.GetFiles(Settings.RTabs_Profiles, "*");
+
+                    foreach (string f in fileList)
+                    {
+                        try {
+                            string fName = f.Substring(Settings.RTabs_Profiles.Length + 1);
+                            Log("COPY ["+fName+"]");
+
+                            File.Copy(Path.Combine(Settings.RTabs_Profiles, fName), Path.Combine(Settings.ProfilesFolder, fName));
+                            if((fName == "index.txt") || (profile_to_load == ""))
+
+                                profile_to_load = fName.Replace(".txt", "");
+                        }
+                        catch(IOException ex) { Log( ex.Message ); }
+                    }
+                    // LOAD FIRST PROFILE
+                    if(profile_to_load != "")
+                    {
+                            Log("profile_to_load=["+profile_to_load+"]");
+                        LoadProfile( profile_to_load );
+                    }
                 }
 
                 // FOLDER FILES

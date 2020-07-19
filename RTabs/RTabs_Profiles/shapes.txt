@@ -1,0 +1,122 @@
+# PROFILE=shapes
+# PRODATE=1594920100
+# PALETTE=Google
+# OPACITY=95
+# DEV_W=1280
+# DEV_H=720
+# MON_SCALE=1
+# DEV_DPI=120
+PALETTE.1=W8, #F0A30A,#82592C,#0050EF,#A20025,#1BA1E2,#D80073,#A3C300,#6A00FF,#5FA917,#008A00,#765F89,#6C8764,#FA6800,#F471D0,#E51300,#7A3B3F,#647687,#00ABA9,#AA00FF,#D7C000
+PALETTE.2=Back, #2E1700,#4E0000,#4E0038,#2D004E,#1F0068,#001E4E,#004D60,#004A00,#15992A,#E56C19,#B81B1B,#B81B6C,#691BB8,#1B58B8,#569CE3,#00AAAA,#83BA1F,#D39D09,#E064B7
+PALETTE.3=Tile, #F3B200,#77B900,#2572EB,#AD103C,#632F00,#B01E00,#C1004F,#7200AC,#4617B4,#006AC1,#008287,#199900,#00C13F,#FF981D,#FF2E12,#FF1D77,#AA40FF,#1FAEFF,#56C5FF,#00D8CC,#91D100,#E1B700,#FF76BC,#00A3A3,#FE7C22
+PALETTE.4=Screen, #261300,#380000,#40002E,#250040,#180052,#001940,#004050,#003E00,#128425,#C35D15,#9E1716,#9E165B,#57169A,#16499A,#4294DE,#008E8E,#7BAD18,#C69408,#DE4AAD
+PALETTE.5=Screen-Tile, #543A24,#61292B,#662C58,#4C2C66,#423173,#2C4566,#306772,#2D652B,#3A9548,#C27D4F,#AA4344,#AA4379,#7F6E94,#6E7E94,#6BA5E7,#439D9A,#94BD4A,#CEA539,#E773BD
+PALETTE.6=ECC, #964B00,#FF0000,#FFA500,#FFFF00,#9ACD32,#6495ED,#EE82EE,#A0A0A0,#FFFFFF,#CFB53B,#C0C0C0
+PALETTE.7=3-Grays, #222222,#666666,#aaaaaa
+PALETTE.8=4-Grays, #222222,#666666,#aaaaaa,#dddddd
+PALETTE.9=Best-Metro, #00aba9,#ff0097,#a200ff,#1ba1e2,#f09609
+PALETTE.10=Blues, #011f4b,#03396c,#005b96,#6497b1,#b3cde0
+PALETTE.11=Cappuccino, #4b3832,#854442,#fff4e6,#3c2f2f,#be9b7b
+PALETTE.12=Caucasian, #ffe0bd,#ffcd94,#eac086,#ffad60,#ffe39f
+PALETTE.13=Craftsman, #d7c797,#845422,#ead61c,#a47c48,#ff0000
+PALETTE.14=FIRE, #fdcf58,#757676,#f27d0c,#800909,#f07f13
+PALETTE.15=Facebook, #3b5998,#8b9dc3,#dfe3ee,#f7f7f7,#ffffff
+PALETTE.16=Google, #008744,#0057e7,#d62d20,#ffa700,#ffffff
+PALETTE.17=Grays+Red, #222222,#bb0000,#666666,#aaaaaa
+PALETTE.18=Green, #4d7f17,#6bb120,#8ae429,#9afe2e,#aefe57
+PALETTE.19=Greys, #eceff1,#cfd8dc,#b0bec5,#90a4ae,#78909c,#607d8b,#546e7a,#455a64,#37474f,#263238,#000000,#ffffff
+PALETTE.20=Lavender, #997a8d,#aa98a9,#b39eb5,#777696,#796878
+PALETTE.21=Lollipop, #009688,#35a79c,#54b2a9,#65c3ba,#83d0c9
+PALETTE.22=Metro-Style, #00aedb,#a200ff,#f47835,#d41243,#8ec127
+PALETTE.23=Metro-UI, #d11141,#00b159,#00aedb,#f37735,#ffc425
+PALETTE.24=Oranges, #fffde7,#fff9c4,#fff59d,#fff176,#ffee58,#ffeb3b,#fdd835,#fbc02d,#f9a825,#f57f17,#ffff8d,#ffff00,#ffea00,#ffd600,#fff8e1,#ffecb3,#ffe082,#ffd54f,#ffca28,#ffc107,#ffb300,#ffa000,#ff8f00,#ff6f00,#ffe57f,#ffd740,#ffc400,#ffab00,#fff3e0,#ffe0b2,#ffcc80,#ffb74d,#ffa726,#ff9800,#fb8c00,#f57c00,#ef6c00,#e65100,#ffd180,#ffab40,#ff9100,#ff6d00
+PALETTE.25=Pentagon, #ff0000,#ccff00,#00ff66,#0066ff,#cc00ff
+PALETTE.26=Pinks, #ff77aa,#ff99cc,#ffbbee,#ff5588,#ff3377
+PALETTE.27=Purples, #f3e5f5,#e1bee7,#ce93d8,#ba68c8,#ab47bc,#9c27b0,#8e24aa,#7b1fa2,#6a1b9a,#4a148c,#ea80fc,#e040fb,#d500f9,#aa00ff
+PALETTE.28=Reds, #ffebee,#ffcdd2,#ef9a9a,#e57373,#ef5350,#f44336,#e53935,#d32f2f,#c62828,#b71c1c,#ff8a80,#ff5252,#ff1744,#d50000,#fce4ec,#f8bbd0,#f48fb1,#f06292,#ec407a,#e91e63,#d81b60,#c2185b,#ad1457,#880e4f,#ff80ab,#ff4081,#f50057,#c51162,#f3e5f5,#e1bee7,#ce93d8,#ba68c8,#ab47bc,#9c27b0,#8e24aa,#7b1fa2,#6a1b9a,#4a148c,#ea80fc,#e040fb,#d500f9,#aa00ff
+PALETTE.29=Retro, #666547,#fb2e01,#6fcb9f,#ffe28a,#fffeb3
+PALETTE.30=Skin, #8d5524,#c68642,#e0ac69,#f1c27d,#ffdbac
+PALETTE.31=Twitter, #326ada,#d4d8d4,#433e90,#a19c9c,#d2d2d2
+PALETTE.32=Violet, #ff80ab,#ff4081,#f50057,#c51162,#f3e5f5,#e1bee7,#ce93d8,#ba68c8,#ab47bc,#9c27b0,#8e24aa,#7b1fa2,#6a1b9a,#4a148c,#ea80fc,#e040fb,#d500f9,#aa00ff
+PALETTE.33=Whites, #faf0e6,#fff5ee,#fdf5e6,#faf0e6,#faebd7
+PALETTE.34=other-blues, #0277bd,#01579b,#80d8ff,#40c4ff,#00b0ff,#0277bd,#01579b,#80d8ff,#40c4ff,#00b0ff
+PALETTE.35=some-blues, #00b0ff,#01579b,#0277bd,#40c4ff,#80d8ff
+PALETTE.36=NorthBay, #ff0000,#014a01,#06357a,#ec891d,#507e4e
+PALETTE.37=XXX, #222222,#bb0000,#ce93d8,#ba68c8,#ab47bc,#d11141,#00b159,#008744,#0057e7,#d62d20,#fffde7,#fff9c4,#fff59d,#fff176
+PALETTE.38=YYY, #FF0000,#00FF00,#0000FF,#FF00FF
+PALETTE.39=Amber, #FFC107,#FFF8E1,#FFECB3,#FFE082,#FFD54F,#FFCA28,#FFC107,#FFB300,#FFA000,#FF8F00,#FF6F00,#FFE57F,#FFD740,#FFC400,#FFAB00
+PALETTE.40=ridge, #bb1515,#e0cda7,#2a334f,#6b4423,#ac8f57
+PALETTE.41=ZZZ, #F0A30A,#82592C,#0050EF,#A20025,#1BA1E2
+PALETTE.42=Microsoft, #f65314,#7cbb00,#00a1f1,#ffbb00,#737373
+PALETTE.43=Manaan, #A0C2F7,#ADD1FC,#B5CEF9,#B5D1F9,#BDE0FD,#C6DDFC,#D2E7FC,#D4EFFE,#E8FCFF
+PALETTE.44=Terra, #8C3A04,#BF6C27,#D68B4B,#E99351,#E89F66
+TAB.panel_usr070=type=SHORTCUT|xy_wh=19,21,03,03|shape=circle|color=|zoom=.9|tag=OPACITY=95 #404040|text=/ / /|tt=hex_color=[#404040]=[Color [A=255, R=64, G=64, B=64]]
+TAB.panel_usr069=type=SHORTCUT|xy_wh=13,18,03,03|shape=|color=|zoom=.9|tag=PLPREV|text=PLPREV|tt=hex_color=[#666666]=[Color_[A=255,_R=102,_G=102,_B=102]]
+TAB.panel_usr068=type=SHORTCUT|xy_wh=13,07,06,02|shape=|color=|zoom=.9|tag=PROPERTY BG_VIEW_DEFAULT #444444|text=#444444|tt=hex_color=[#444444]=[Color [A=255, R=68, G=68, B=68]]
+TAB.panel_usr067=type=SHORTCUT|xy_wh=16,18,03,03|shape=|color=|zoom=.9|tag=PLNEXT|text=PLNEXT|tt=hex_color=[#666666]=[Color_[A=255,_R=102,_G=102,_B=102]]
+TAB.panel_usr066=type=SHORTCUT|xy_wh=13,21,03,03|shape=|color=|zoom=.9|tag=GUI_STYLE=ONEDGE|text=ONEDGE|tt=
+TAB.panel_usr065=type=SHORTCUT|xy_wh=19,01,03,02|shape=|color=|zoom=.9|tag=PROPERTY BAND_HIDE_WIDTH 200|text=200|tt=
+TAB.panel_usr064=type=SHORTCUT|xy_wh=22,01,03,02|shape=|color=|zoom=.9|tag=PROPERTY BAND_HIDE_WIDTH 300|text=300|tt=
+TAB.panel_usr063=type=SHORTCUT|xy_wh=22,05,03,02|shape=|color=|zoom=.9|tag=PROPERTY BG_VIEW_DEFAULT #100000|text=Dark_Red|tt=hex_color=[#100000]=[Color [A=255, R=16, G=0, B=0]]
+TAB.panel_usr062=type=SHORTCUT|xy_wh=45,18,06,06|shape=|color=|zoom=.89|tag=PLNEXT|text=PLNEXT|tt=
+TAB.panel_usr061=type=SHORTCUT|xy_wh=00,04,11,04|shape=|color=|zoom=1.37|tag=PROFILE barbie #FF0000|text=barbie |tt=hex_color=[#FF0000]=[Color [Red]]
+TAB.panel_usr060=type=SHORTCUT|xy_wh=45,24,06,06|shape=|color=|zoom=.89|tag=PLPREV|text=PLPREV|tt=
+TAB.panel_usr059=type=SHORTCUT|xy_wh=26,15,08,03|shape=circle|color=|zoom=.9|tag=GUI_STYLE=ROUND|text=CIRCLE|tt=
+TAB.panel_usr058=type=SHORTCUT|xy_wh=41,15,03,03|shape=onedge|color=|zoom=.9|tag=GUI_STYLE=ONEDGE|text=ONEDGE|tt=
+TAB.panel_usr057=type=SHORTCUT|xy_wh=19,24,06,03|shape=|color=|zoom=.9|tag=GUI_STYLE=TILE|text=TILE|tt=
+TAB.panel_usr056=type=SHORTCUT|xy_wh=41,11,03,03|shape=circle|color=|zoom=.9|tag=GUI_STYLE=ROUND|text=circle|tt=
+TAB.panel_usr055=type=SHORTCUT|xy_wh=58,06,03,03|shape=circle|color=|zoom=.9|tag=OPACITY=95|text=95%|tt=*Load_this_profile
+TAB.panel_usr054=type=SHORTCUT|xy_wh=26,18,08,03|shape=onedge|color=|zoom=.9|tag=GUI_STYLE=ONEDGE|text=ONEDGE|tt=
+TAB.panel_usr053=type=SHORTCUT|xy_wh=26,21,08,03|shape=padd_r|color=|zoom=.9|tag=GUI_STYLE=PADD_R|text=PADD_R|tt=
+TAB.panel_usr052=type=SHORTCUT|xy_wh=26,24,08,03|shape=square|color=|zoom=.9|tag=GUI_STYLE=SQUARE|text=SQUARE|tt=
+TAB.panel_usr051=type=SHORTCUT|xy_wh=26,27,08,03|shape=tile|color=|zoom=.9|tag=GUI_STYLE=TILE|text=TILE|tt=
+TAB.panel_usr050=type=SHORTCUT|xy_wh=22,18,03,03|shape=circle|color=|zoom=.9|tag=OPACITY=100 #ffffff|text=/ / /|tt=hex_color=[#ffffff]=[Color [White]]
+TAB.panel_usr049=type=SHORTCUT|xy_wh=22,07,03,02|shape=|color=|zoom=.9|tag=PROPERTY BAND_HIDE_WIDTH 10|text=10|tt=
+TAB.panel_usr048=type=SHORTCUT|xy_wh=34,15,03,03|shape=circle|color=|zoom=.9|tag=GUI_STYLE=ROUND|text=circle|tt=
+TAB.panel_usr047=type=SHORTCUT|xy_wh=34,18,03,03|shape=onedge|color=|zoom=.9|tag=GUI_STYLE=ONEDGE|text=onedge|tt=
+TAB.panel_usr046=type=SHORTCUT|xy_wh=45,01,06,06|shape=circle|color=|zoom=.9|tag=PALETTE=Google|text=Google|tt=
+TAB.panel_usr045=type=SHORTCUT|xy_wh=48,03,11,11|shape=circle|color=|zoom=.9|tag=PALETTE|text=🎨FIRE_α95\nUse5_max0_#5|tt=
+TAB.panel_usr044=type=SHORTCUT|xy_wh=46,10,06,06|shape=circle|color=|zoom=.9|tag=PALETTE=W8|text=W8|tt=
+TAB.panel_usr043=type=SHORTCUT|xy_wh=37,20,03,05|shape=square|color=|zoom=.9|tag=GUI_STYLE=SQUARE|text=SQUARE|tt=
+TAB.panel_usr042=type=SHORTCUT|xy_wh=41,23,03,03|shape=square|color=|zoom=.9|tag=GUI_STYLE=SQUARE|text=SQUARE|tt=
+TAB.panel_usr041=type=SHORTCUT|xy_wh=41,27,03,03|shape=tile|color=|zoom=.9|tag=GUI_STYLE=TILE|text=TILE|tt=
+TAB.panel_usr040=type=SHORTCUT|xy_wh=41,19,03,03|shape=padd_r|color=|zoom=.9|tag=GUI_STYLE=PADD_R|text=PADD{U+005F}R|tt=
+TAB.panel_usr039=type=SHORTCUT|xy_wh=13,01,06,02|shape=|color=|zoom=.9|tag=PROPERTY BG_VIEW_DEFAULT #ffffff|text=#FFFFFF|tt=hex_color=[#ffffff]=[Color [White]]
+TAB.panel_usr038=type=SHORTCUT|xy_wh=19,03,03,02|shape=|color=|zoom=.9|tag=PROPERTY BAND_HIDE_WIDTH 50|text=50|tt=
+TAB.panel_usr037=type=SHORTCUT|xy_wh=13,03,06,02|shape=|color=|zoom=.9|tag=PROPERTY BG_VIEW_DEFAULT #cccccc|text=light|tt=hex_color=[#cccccc]=[Color [A=255, R=204, G=204, B=204]]
+TAB.panel_usr036=type=SHORTCUT|xy_wh=19,27,06,03|shape=|color=|zoom=.9|tag=GUI_STYLE=SQUARE|text=SQUARE|tt=
+TAB.panel_usr035=type=SHORTCUT|xy_wh=16,21,03,03|shape=|color=|zoom=.9|tag=GUI_STYLE=ROUND|text=ROUND|tt=
+TAB.panel_usr034=type=SHORTCUT|xy_wh=57,03,03,03|shape=circle|color=|zoom=.9|tag=OPACITY=100|text=100%|tt=*Load_this_profile
+TAB.panel_usr033=type=SHORTCUT|xy_wh=44,06,06,06|shape=circle|color=|zoom=.9|tag=PALETTE=ECC|text=ECC\n...Electronic_Chart_Color_code|tt=
+TAB.panel_usr032=type=SHORTCUT|xy_wh=13,24,06,06|shape=|color=|zoom=.9|tag=GUI_STYLE|text=GUI{U+005F}STYLE\n...swap_button_STYLE:_ROUND↔SQUARE↔ONEDGE|tt=
+TAB.panel_usr031=type=SHORTCUT|xy_wh=37,25,03,05|shape=tile|color=|zoom=.9|tag=GUI_STYLE=TILE|text=TILE|tt=
+TAB.panel_usr030=type=SHORTCUT|xy_wh=37,15,03,05|shape=padd_r|color=|zoom=.9|tag=GUI_STYLE=PADD_R|text=PADD{U+005F}R|tt=
+TAB.panel_usr029=type=SHORTCUT|xy_wh=19,05,03,02|shape=|color=|zoom=.9|tag=PROPERTY BAND_HIDE_WIDTH 20|text=20|tt=
+TAB.panel_usr028=type=SHORTCUT|xy_wh=19,09,06,02|shape=|color=|zoom=.9|tag=#|text=BAND WIDTH|tt=
+TAB.panel_usr027=type=SHORTCUT|xy_wh=13,05,06,02|shape=|color=|zoom=.6|tag=PROPERTY BG_VIEW_DEFAULT #888888|text=#888888|tt=hex_color=[#888888]=[Color [A=255, R=136, G=136, B=136]]
+TAB.panel_usr026=type=SHORTCUT|xy_wh=34,21,03,03|shape=padd_r|color=|zoom=.9|tag=GUI_STYLE=PADD_R|text=padd_r|tt=
+TAB.panel_usr025=type=SHORTCUT|xy_wh=34,24,03,03|shape=square|color=|zoom=.9|tag=GUI_STYLE=SQUARE|text=SQUARE|tt=
+TAB.panel_usr024=type=SHORTCUT|xy_wh=34,27,03,03|shape=tile|color=|zoom=.9|tag=GUI_STYLE=TILE|text=TILE|tt=
+TAB.panel_usr023=type=SHORTCUT|xy_wh=37,10,03,05|shape=onedge|color=|zoom=.9|tag=GUI_STYLE=ONEDGE|text=ONEDGE|tt=
+TAB.panel_usr022=type=SHORTCUT|xy_wh=50,00,04,04|shape=circle|color=|zoom=.9|tag=PROFILE_SAVE #88888888|text=PROFILE\nSAVE|tt=hex_color=[#88888888]=[Color [A=136, R=136, G=136, B=136]]
+TAB.panel_usr021=type=SHORTCUT|xy_wh=22,03,03,02|shape=|color=|zoom=.9|tag=PROPERTY BAND_HIDE_WIDTH 100|text=100|tt=
+TAB.panel_usr020=type=SHORTCUT|xy_wh=50,12,05,05|shape=circle|color=|zoom=.9|tag=PALETTE=Microsoft|text=MS|tt=
+TAB.panel_usr019=type=SHORTCUT|xy_wh=59,12,04,04|shape=circle|color=|zoom=.9|tag=OPACITY=0|text=0|tt=*Load_this_profile
+TAB.panel_usr018=type=SHORTCUT|xy_wh=56,14,04,04|shape=circle|color=|zoom=.9|tag=OPACITY=-2|text=-2|tt=*Load_this_profile
+TAB.panel_usr017=type=SHORTCUT|xy_wh=40,06,04,03|shape=onedge|color=01|zoom=1.6|tag=OFFLINE|text=OFFLINE|tt=*
+TAB.panel_usr016=type=SHORTCUT|xy_wh=19,07,03,02|shape=|color=|zoom=.9|tag=PROPERTY BAND_HIDE_WIDTH 4|text=4|tt=
+TAB.panel_usr015=type=SHORTCUT|xy_wh=60,21,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/3.html|text=3|tt=
+TAB.panel_usr014=type=SHORTCUT|xy_wh=57,21,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/2.html|text=2\n...\nremotetabs_dev_2|tt=
+TAB.panel_usr013=type=SHORTCUT|xy_wh=54,21,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/1.html|text=1\n...remotetabs_trulyergonomic_1|tt=
+TAB.panel_usr012=type=SHORTCUT|xy_wh=60,24,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/6.html|text=6|tt=
+TAB.panel_usr011=type=SHORTCUT|xy_wh=00,00,11,04|shape=|color=|zoom=1.37|tag=PROFILE index #964B00|text=index       |tt=hex_color=[#964B00]=[Color [A=255, R=150, G=75, B=0]]
+TAB.panel_usr010=type=SHORTCUT|xy_wh=57,24,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/5.html|text=5|tt=
+TAB.panel_usr009=type=SHORTCUT|xy_wh=54,24,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/4.html|text=4|tt=
+TAB.panel_usr008=type=SHORTCUT|xy_wh=00,16,12,04|shape=|color=|zoom=1.37|tag=PROFILE shapes #9ACD32|text=shapes |tt=hex_color=[#9ACD32]=[Color [YellowGreen]]
+TAB.panel_usr007=type=SHORTCUT|xy_wh=60,27,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/9.html|text=9|tt=
+TAB.panel_usr006=type=SHORTCUT|xy_wh=57,27,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/8.html|text=8|tt=
+TAB.panel_usr005=type=SHORTCUT|xy_wh=13,09,06,02|shape=|color=|zoom=.9|tag=PROPERTY BG_VIEW_DEFAULT #000030|text=#000030|tt=hex_color=[#000030]=[Color [A=255, R=0, G=0, B=48]]
+TAB.panel_usr004=type=SHORTCUT|xy_wh=54,27,03,03|shape=|color=|zoom=1|tag=http://remotetabs.com/dev/test/7.html|text=7|tt=
+TAB.panel_usr003=type=SHORTCUT|xy_wh=00,12,11,04|shape=|color=|zoom=1.37|tag=PROFILE saurian #FFFF00|text=saurian|tt=hex_color=[#FFFF00]=[Color [Yellow]]
+TAB.panel_usr002=type=SHORTCUT|xy_wh=00,08,11,04|shape=|color=|zoom=1.37|tag=PROFILE desktop #FFA500|text=desktop|tt=hex_color=[#FFA500]=[Color [Orange]]
+TAB.panel_usr001=type=SHORTCUT|xy_wh=00,20,11,04|shape=|color=|zoom=1.37|tag=PROFILE sound #6495ED|text=sound  |tt=hex_color=[#6495ED]=[Color [CornflowerBlue]]

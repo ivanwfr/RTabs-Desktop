@@ -54,6 +54,8 @@ gls git_log_stat:
 :}!!find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'
 :}!!find . -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|csproj|suo)\>' | sed -e 's/^\.\/*//'
 
+# TODO : when profiles are missing from MyDocumemntsFolder .. copy sample RTabs_Profiles/sample/*.txt .. Util/src/Settings.cs
+
 :cd %:h|:update|:only|:terminal make git_add_files
  gaf  git_add_files:
 	@(echo "[$@]";\

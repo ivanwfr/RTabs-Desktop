@@ -50,7 +50,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\..\..\DATA\ANDROID\PROJECTS\DISTRIBUTE\windows\</OutputPath>
+    <OutputPath>..\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -61,7 +61,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\..\..\DATA\ANDROID\PROJECTS\DISTRIBUTE\windows\RTabsServer\</OutputPath>
+    <OutputPath>..\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>

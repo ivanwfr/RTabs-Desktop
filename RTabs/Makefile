@@ -1,7 +1,9 @@
 ###########################################################################################################
-### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200717:17h:09) #############################
+### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200719:02h:11) #############################
 ###########################################################################################################
 include Make_GIT
+default: clean arch tags
+# VARS {{{
  TOP		= $(LOCAL)/STORE/DEV/PROJECTS
  APPDIR		= RTabs
  MODULES	= RTabs RTabsDesigner RTabsServer Util .
@@ -11,18 +13,16 @@ include Make_GIT
  RAR		= rar.exe
  RAS            = -av- -c- -cfg- -ed -idp -inul -tl
  FILE_FILTER    = sed -e '/^\.\/[^\/]*$$/d' -e 's/^\.\///' -e '/Images/d' -e '/IMAGES/d' -e '/debug/d' -e '/Debug/d' -e '/DEBUG/d'
-
-default: clean arch tags
-
+#}}}
+:cd %:h|:update|:only|:terminal make GITHUB
 :cd %:h|:update|:only|:terminal make links
 ################ GITHUB {{{
 :}!!find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'
 :}!!find . -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|csproj|suo)\>' | sed -e 's/^\.\/*//'
 
-:cd %:h|:update|:only|:terminal make GITHUB
  GITHUB:
 	@(echo "[$@]";\
-	   FILES=`find .  -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|suo)\>' | sed -e 's/^\.\/*//' -e 's/ /\n/'`;\
+	   FILES="RTabs_Profiles/* `find .  -type f | egrep -v '\<(vim|tags|BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|cd|obj|git|suo|exe|dll|pdb|application|lnk)\>' | sed -e 's/^\.\/*//' -e 's/ /\n/'`";\
 	   LINKS=`find R* -type l | sed -e 's/^\.\/*//' -e 's/ /\n/'`;\
 	\
 	LINKS=`echo "$$LINKS" | grep -v '.cs'`;\
@@ -42,23 +42,13 @@ default: clean arch tags
 	\
 	echo "ARCHIVE";\
 	    DATE=`date '+%y%m%d'`;\
-	    ARCHIVE="$(APPDIR)_$$DATE.rar";\
+	    ARCHIVE="$(APPDIR)_$$DATE.zip";\
             rm -f                    ../GITHUB/$$ARCHIVE;\
-	    : echo $(RAR)   a $(RAS) ../GITHUB/$$ARCHIVE $$FILES;\
-	    $(RAR)   a $(RAS)        ../GITHUB/$$ARCHIVE $$FILES;\
-	    $(LS)         -lt        ../GITHUB/*.rar | head -2;\
-	    $(RAR)         l         ../GITHUB/$$ARCHIVE;\
+	    $(JAR)   Mcf             ../GITHUB/$$ARCHIVE $$FILES;\
+	    $(LS)         -lt        ../GITHUB/*.zip | head -2;\
+	    $(JAR)   tvf             ../GITHUB/$$ARCHIVE;\
 	\
 	echo "[$@ DONE]";\
-	)
-
-:set columns=999|:only|vert terminal ++cols=150 make git_add_folders
-:                                               make git_add_folders
- gad  git_add_folders:
-	@(echo "[$@]";\
-	DIRS=`find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'`;\
-	echo git add $$DIRS;\
-	:    git add $$DIRS;\
 	)
 
 #}}}
