@@ -1,5 +1,5 @@
-# PROFILE=samples
-# PRODATE=1595033449
+# PROFILE=SAMPLE/index
+# PRODATE=1595199373 2020-07-20 00:56:13 (by RTabsDesigner)
 # PALETTE=W8
 # OPACITY=95
 # DEV_W=1024
@@ -50,17 +50,18 @@ PALETTE.41=ZZZ, #F0A30A,#82592C,#0050EF,#A20025,#1BA1E2
 PALETTE.42=Microsoft, #f65314,#7cbb00,#00a1f1,#ffbb00,#737373
 PALETTE.43=Manaan, #A0C2F7,#ADD1FC,#B5CEF9,#B5D1F9,#BDE0FD,#C6DDFC,#D2E7FC,#D4EFFE,#E8FCFF
 PALETTE.44=Terra, #8C3A04,#BF6C27,#D68B4B,#E99351,#E89F66
-TAB.panel_usr014=type=SHORTCUT|xy_wh=30,01,08,08|shape=onedge|color=|zoom=1.37|tag=SERVER|text=RTabs-192.168.1.14\nPORT_4001\n...current_server_connection_details|tt=
-TAB.panel_usr013=type=SHORTCUT|xy_wh=22,01,08,08|shape=onedge|color=|zoom=.92|tag=SIGNIN password=pass #00ff44|text=SIGN\nIN\n...CUT-PASTE\nivanw@orange.fr\nivanw0117_(iwi)\niGan@117_(igp)\nZoliw0117_(izZ)|tt=hex_color=[#00ff44]=[Color [A=255, R=0, G=255, B=68]]
-TAB.panel_usr012=type=SHORTCUT|xy_wh=41,01,08,08|shape=padd_r|color=02|zoom=1.75|tag=RUN nircmd.exe monitor off|text=Monitor\nOff|tt=
-TAB.panel_usr011=type=SHORTCUT|xy_wh=24,11,08,08|shape=onedge|color=01|zoom=1.59|tag=FIT_H|text=FIT_H|tt=hex_color=[#44FF44]=[Color [A=255, R=68, G=255, B=68]]
-TAB.panel_usr010=type=SHORTCUT|xy_wh=16,11,08,08|shape=onedge|color=01|zoom=1.59|tag=FIT_W|text=FIT_W|tt=hex_color=[#44FF44]=[Color [A=255, R=68, G=255, B=68]]
-TAB.panel_usr009=type=SHORTCUT|xy_wh=34,11,13,09|shape=|color=|zoom=.69|tag=DASH|text=DASH|tt=
-TAB.panel_usr008=type=SHORTCUT|xy_wh=14,07,08,02|shape=onedge|color=|zoom=1.37|tag=WOL 192.168.1.14 255.255.255.0 E0-CB-4E-8D-91-BB|text=WOL 192.168.1.14\nE0-CB-4E-8D-91-BB|tt=
-TAB.panel_usr007=type=SHORTCUT|xy_wh=14,01,08,06|shape=onedge|color=|zoom=1.37|tag=WOL|text=WOL|tt=
-TAB.panel_usr006=type=SHORTCUT|xy_wh=01,09,11,04|shape=|color=|zoom=1.37|tag=PROFILE desktop #FFA500|text=desktop|tt=hex_color=[#FFA500]=[Color [Orange]]
-TAB.panel_usr005=type=SHORTCUT|xy_wh=01,21,11,04|shape=|color=|zoom=1.37|tag=PROFILE sound #6495ED|text=sound  |tt=hex_color=[#6495ED]=[Color [CornflowerBlue]]
-TAB.panel_usr004=type=SHORTCUT|xy_wh=01,05,11,04|shape=|color=|zoom=1.37|tag=PROFILE barbie #FF0000|text=barbie |tt=hex_color=[#FF0000]=[Color [Red]]
-TAB.panel_usr003=type=SHORTCUT|xy_wh=01,01,12,04|shape=|color=|zoom=1.37|tag=PROFILE index #964B00|text=index       |tt=hex_color=[#964B00]=[Color [A=255, R=150, G=75, B=0]]
-TAB.panel_usr002=type=SHORTCUT|xy_wh=01,17,11,04|shape=|color=|zoom=1.37|tag=PROFILE shapes #9ACD32|text=shapes |tt=hex_color=[#9ACD32]=[Color [YellowGreen]]
-TAB.panel_usr001=type=SHORTCUT|xy_wh=01,13,11,04|shape=|color=|zoom=1.37|tag=PROFILE saurian #FFFF00|text=saurian|tt=hex_color=[#FFFF00]=[Color [Yellow]]
+TAB.panel_usr015=type=SHORTCUT|xy_wh=13,20,19,05|shape=|color=|zoom=1.37|tag=PROFILE /index #FF0000|text=index\n(top Level)|tt=hex_color=[#964B00]=[Color [A=255, R=150, G=75, B=0]]
+TAB.panel_usr014=type=SHORTCUT|xy_wh=01,13,11,04|shape=|color=|zoom=1.37|tag=PROFILE saurian #FFFF00|text=saurian|tt=hex_color=[#FFFF00]=[Color [Yellow]]
+TAB.panel_usr013=type=SHORTCUT|xy_wh=01,17,11,04|shape=|color=|zoom=1.37|tag=PROFILE shapes #9ACD32|text=shapes |tt=hex_color=[#9ACD32]=[Color [YellowGreen]]
+TAB.panel_usr012=type=SHORTCUT|xy_wh=1,1,12,4|shape=|color=|zoom=1.37|tag=PROFILE index #964B00|text=index       |tt=hex_color=[#964B00]=[Color [A=255, R=150, G=75, B=0]]
+TAB.panel_usr011=type=SHORTCUT|xy_wh=01,05,11,04|shape=|color=|zoom=1.37|tag=PROFILE barbie #FF0000|text=barbie |tt=hex_color=[#FF0000]=[Color [Red]]
+TAB.panel_usr010=type=SHORTCUT|xy_wh=01,21,11,04|shape=|color=|zoom=1.37|tag=PROFILE sound #6495ED|text=sound  |tt=hex_color=[#6495ED]=[Color [CornflowerBlue]]
+TAB.panel_usr009=type=SHORTCUT|xy_wh=01,09,11,04|shape=|color=|zoom=1.37|tag=PROFILE desktop #FFA500|text=desktop|tt=hex_color=[#FFA500]=[Color [Orange]]
+TAB.panel_usr008=type=SHORTCUT|xy_wh=14,01,08,06|shape=onedge|color=|zoom=1.37|tag=WOL|text=WOL|tt=
+TAB.panel_usr007=type=SHORTCUT|xy_wh=14,07,08,02|shape=onedge|color=|zoom=1.37|tag=WOL 192.168.1.14 255.255.255.0 E0-CB-4E-8D-91-BB|text=WOL 192.168.1.14\nE0-CB-4E-8D-91-BB|tt=
+TAB.panel_usr006=type=SHORTCUT|xy_wh=34,11,13,09|shape=|color=|zoom=.69|tag=DASH|text=DASH|tt=
+TAB.panel_usr005=type=SHORTCUT|xy_wh=16,11,08,08|shape=onedge|color=01|zoom=1.59|tag=FIT_W|text=FIT_W|tt=hex_color=[#44FF44]=[Color [A=255, R=68, G=255, B=68]]
+TAB.panel_usr004=type=SHORTCUT|xy_wh=24,11,08,08|shape=onedge|color=01|zoom=1.59|tag=FIT_H|text=FIT_H|tt=hex_color=[#44FF44]=[Color [A=255, R=68, G=255, B=68]]
+TAB.panel_usr003=type=SHORTCUT|xy_wh=41,01,08,08|shape=padd_r|color=02|zoom=1.75|tag=RUN nircmd.exe monitor off|text=Monitor\nOff|tt=
+TAB.panel_usr002=type=SHORTCUT|xy_wh=22,01,08,08|shape=onedge|color=|zoom=.92|tag=SIGNIN password=pass #00ff44|text=SIGN\nIN\n...CUT-PASTE\nivanw@orange.fr\nivanw0117_(iwi)\niGan@117_(igp)\nZoliw0117_(izZ)|tt=hex_color=[#00ff44]=[Color [A=255, R=0, G=255, B=68]]
+TAB.panel_usr001=type=SHORTCUT|xy_wh=30,01,08,08|shape=onedge|color=|zoom=1.37|tag=SERVER|text=RTabs-192.168.1.14\nPORT_4001\n...current_server_connection_details|tt=

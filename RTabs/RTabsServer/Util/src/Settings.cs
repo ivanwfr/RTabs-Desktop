@@ -17,7 +17,7 @@ namespace Util
 {
     public class Settings
     {
-        private static string   Settings_TAG = "Settings (200719:01h:43)";
+        private const  string   Settings_TAG = "Settings (200720:04h:42)";
 
         public static bool UseMutex = false;
 
@@ -273,9 +273,9 @@ namespace Util
             +"Profiles"
             ;
 
-        public static Dictionary<string, string> PalettesDict   = new Dictionary<string, string>();
-        public static Dictionary<string, string> ProfilesDict   = new Dictionary<string, string>();
-        public static Dictionary<string, string> TabsDict       = new Dictionary<string, string>();
+        private static Dictionary<string, string> Profiles_Dict  = new Dictionary<string, string>();
+        public  static Dictionary<string, string> PalettesDict   = new Dictionary<string, string>();
+        public  static Dictionary<string, string> TabsDict       = new Dictionary<string, string>();
 /*
 :!start explorer "https://msdn.microsoft.com/en-us/library/xfhwa508(v=vs.110).aspx"
 :new /LOCAL/STORE/DEV/PROJECTS/DX1Utility_141/Macro/Macro.cs
@@ -290,17 +290,18 @@ namespace Util
         // Get_Profiles_Dict .. [profile_mame] [file_path] {{{
         public static void Clear_Profiles_Dict() //{{{
         {
-            ProfilesDict.Clear();
+            Profiles_Dict.Clear();
         }
         //}}}
         public static Dictionary<string, string> Get_Profiles_Dict()
         {
             // PROFILE DICTIONARY .. [<profile_mame> <file_path>] {{{
-            if(ProfilesDict.Count < 1)
+            if(Profiles_Dict.Count < 1)
             {
                 Log("Get_Profiles_Dict:");
 
                 // CREATE AND POPULATE PROFILE FOLDER
+                //{{{
                 if(!System.IO.Directory.Exists(Settings.ProfilesFolder) )
                 {
                     Log("...CreateDirectory ProfilesFolder=["+Settings.ProfilesFolder+"]");
@@ -331,11 +332,12 @@ namespace Util
                         LoadProfile( profile_to_load );
                     }
                 }
+                //}}}
 
                 // FOLDER FILES
             //  String[] file_paths = System.IO.Directory.GetFiles(Settings.ProfilesFolder, "*.txt");
                 String[] file_paths = System.IO.Directory.GetFiles(Settings.ProfilesFolder, "*.txt", SearchOption.AllDirectories);
-                Log("...file_paths.Length=["+ file_paths.Length +"]");
+                Log( "...file_paths.Length=["+ file_paths.Length +"]");
 
                 //Array.Sort( file_paths );
 
@@ -345,6 +347,7 @@ namespace Util
                 int idx_tail = Settings.ProfilesFolder.Length+1;
             //  Log("...idx_tail=["+ idx_tail +"]");
 
+                int count = 0;
                 foreach(String file_path in file_paths)
                 {
                 //  Log("...file_path=["+ file_path +"]");
@@ -357,24 +360,24 @@ namespace Util
                     if( file_path.IndexOf(exclude_BAK) < 0)
                     {
                         string profile_tail     = file_path.Substring( idx_tail );
-                        Log("...profile_tail=["+ profile_tail +"]");
+                    //  Log("...profile_tail=["+ profile_tail +"]");
 
                     //  String[] pathComponents = profile_tail.Split( Path.DirectorySeparatorChar );
                     //  pathComponents          = pathComponents.Last().Split('.');
                     //  string profile_name     = pathComponents.First();
 
                         string profile_name = profile_tail.Substring(0, profile_tail.Length-4).Replace(Path.DirectorySeparatorChar.ToString(),"/");
-                        Log("...profile_name=["+ profile_name +"]");
+                        Log(String.Format("...{0,3} - profile_name=[{1}]", ++count, profile_name));
 
                         try {
-                            ProfilesDict.Add(profile_name, file_path);
+                            Profiles_Dict.Add(profile_name, file_path);
                         }
                         catch(Exception) { }
                     }
                 }
             }
             //}}}
-            return ProfilesDict;
+            return Profiles_Dict;
         }
         //}}}
 
@@ -423,10 +426,17 @@ namespace Util
             Get_Profiles_Dict();
 
             string filePath = "";
-            if( ProfilesDict.ContainsKey( profile_name ) )
-                filePath = ProfilesDict[ profile_name ];
+
+            // TODO (200719) prioritize relative current profile first
+            // i.e.:
+            // LOADING [index]
+            // ...FROM [samples/sample1]
+            // .....TO [samples/index] .. instead of [/index]
+
+            if( Profiles_Dict.ContainsKey( profile_name ) )
+                filePath = Profiles_Dict[ profile_name ];
             else
-                Log("*** GetProfilePath("+ profile_name +") ...not found in ProfilesDict");
+                Log("*** GetProfilePath("+ profile_name +") ...not found in Profiles_Dict");
 
             Log("GetProfilePath("+ profile_name +") ...return["+ filePath +"]");
             return filePath;
@@ -463,10 +473,10 @@ namespace Util
         {
             StringBuilder sb = new StringBuilder();
 
-            Dictionary<string, string>.KeyCollection profile_names = ProfilesDict.Keys;
+            Dictionary<string, string>.KeyCollection profile_names = Profiles_Dict.Keys;
 
             foreach(string profile_name in profile_names)
-                sb.Append( String.Format("{0,32} = {1}\n", profile_name, ProfilesDict[profile_name]) );
+                sb.Append( String.Format("{0,32} = {1}\n", profile_name, Profiles_Dict[profile_name]) );
 
             return sb.ToString();
         }
@@ -477,63 +487,105 @@ namespace Util
         {
             Log("LoadProfile("+ profile_name +")");
 
-            // first load error will refresh profiles list
+            // FIRST LOAD ERROR WILL REFRESH PROFILES LIST
             for(int trial=0; trial < 2; ++trial)
             {
                 Get_Profiles_Dict();
 
                 try {
-                    // KEY_VAL IS TO BE SET BY IMPORTED DATA
-                    Settings.PROFILE = "";
-                    Settings.PRODATE = 0;
+                    // INIT SETTINGS KEY_VAL .. (TO BE SET BY PROFILE'S IMPORTED DATA) {{{
+                    Settings.PRODATE           =  0;
 
-                    Settings.TAG_CMD = "";
-                    Settings.TAG_LYO = "";
-                    Settings.TAG_SFX = "";
+                    Settings.TAG_CMD           = "";
+                    Settings.TAG_LYO           = "";
+                    Settings.TAG_SFX           = "";
 
-                    LoadProfileFromFile(ProfilesDict[ profile_name ]);
+                    //}}}
+                    // PROFILE QUALIFIER {{{
+                    bool       fully_qualified = (profile_name[0] == '/' ) || (profile_name[0] == '\\');
+                    string     current_dirName = Path.GetDirectoryName( Settings.PROFILE );
+                    string     profile_dirName = Path.GetDirectoryName( profile_name );
 
-                    //if( Settings.PROFILE == "")       // ...in case of missing file key-val
-                    // no! FILE NAME IS ALWAYS THE RIGHT ONE
-                    //...
-                    // FORCE PROFILE NAME = FILE NAME
-                    // content could be the one of another saved with a new name
-                    Settings.PROFILE = profile_name;
+                    Log("...Settings.PROFILE=["+ Settings.PROFILE +"]");
+                    Log("....current_dirName=["+ current_dirName  +"]");
+                    Log(".......profile_name=["+ profile_name     +"]");
+                    Log("....profile_dirName=["+ profile_dirName  +"]");
+                    Log("....fully_qualified=["+ fully_qualified  +"]");
 
-                    if(ProfilesDict.Count > 0)          // ...no exception cleanup occured
-                        break;                          // ...proceed to second trial otherwise
+                    //}}}
+                    // 1/2 - TRY RELATIVE TO CURRENT_DIRNAME {{{
+                    bool profile_loaded = false;
+                    if(!fully_qualified && (current_dirName != ""))
+                    {
+                        string relative_name   = current_dirName+"/"+profile_name;
+                        Log(".....relative_name=["+ relative_name   +"]");
 
+                        if( Profiles_Dict.ContainsKey( relative_name ) )
+                        {
+                            string        filePath = Profiles_Dict[ relative_name ];
+                            Log("...LOADING RELATIVE filePath=["+ filePath +"]");
+
+                            profile_loaded         = LoadProfileFromFilePath( filePath );
+
+                            if( profile_loaded )
+                                Settings.PROFILE   = relative_name;
+                        }
+                    }
+                    //}}}
+                    // 2/2 TRY ABSOLUTE {{{
+                    if(!profile_loaded )
+                    {
+                        if(fully_qualified)
+                            profile_name       = profile_name.Substring(1);
+                        string  filePath       = Profiles_Dict[ profile_name ];
+                        Log("...LOADING ABSOLUTE filePath=["+ filePath +"]");
+
+                        profile_loaded         = LoadProfileFromFilePath( filePath );
+
+                        if( profile_loaded )
+                            Settings.PROFILE   = profile_name;
+                    }
+                    //}}}
+                    //{{{
+
+                    if( profile_loaded )
+                        Log("...profile_loaded: "+   Settings.PROFILE +"]");
+
+                    if(profile_loaded || (Profiles_Dict.Count > 0))  // ...no exception cleanup occured
+                        break;                                      // ...proceed to second trial otherwise
+                    //}}}
                 }
                 catch(Exception ex)
                 {
-                    // rescan folder once to update cached list
+                    // RESCAN FOLDER ONCE TO UPDATE CACHED LIST {{{
                     if(trial == 0) {
                         Clear_Profiles_Dict();
                     }
                     else {
                         Log( "*** LoadProfile("+ profile_name +") (folder scan updated) ***\n"
                             + ex.Message +"\n"
-                            +"@@@\n"
-                            + ListProfiles()
-                            +"@@@\n"
+                          //+"@@@\n"
+                          //+ ListProfiles()
+                          //+"@@@\n"
                            );
                     }
+                    //}}}
                 }
             }
         }
         //}}}
-        // LoadProfileFromFile {{{
-        private static void LoadProfileFromFile(string filePath)
+        // LoadProfileFromFilePath {{{
+        private static bool LoadProfileFromFilePath(string filePath)
         {
-            Log("LoadProfileFromFile(filePath=["+ filePath +"]):");
+            Log("LoadProfileFromFilePath(filePath=["+ filePath +"]):");
 
             // *** requires a panel content to parse from
-            if(MainFormInstance == null) return;
+            if(MainFormInstance == null) return false;
             // ACCESS FILE // {{{
             Log("...filePath=["+filePath+"]");
             if( !System.IO.File.Exists( filePath ) ) {
                 Log("*** file not found: ["+ filePath +"]");
-                return;
+                return false;
 
             }
             // }}}
@@ -568,7 +620,7 @@ namespace Util
                 while(line != null);
             }
             catch(Exception ex) {
-                Log("*** LoadProfileFromFile("+filePath+") Exception:\n"+ ex);
+                Log("*** LoadProfileFromFilePath("+filePath+") Exception:\n"+ ex);
             }
             finally {
                 if(reader != null)
@@ -576,7 +628,9 @@ namespace Util
             }
             //}}}
             //if((Settings.APP_NAME.ToUpper().IndexOf("DESIGNER") >= 0)) MainFormInstance.tabsCollection.tabs_container_ResumeLayout();
-            Log("LoadProfileFromFile(filePath=["+ filePath +"]) ..."+ count +" lines loaded");
+            Log("LoadProfileFromFilePath(filePath=["+ filePath +"]) ..."+ count +" lines loaded");
+
+            return true;
         }
         //}}}
         // LoadProfileFromText {{{
@@ -2412,7 +2466,7 @@ HELP             = {HELP}
             Get_Profiles_Dict();
             string profiles_status
                 = SEP +"=== USER:\n"
-                + String.Format("| {0,10} = {1}\n"                                   , "PROFILES", ProfilesDict.Count)
+                + String.Format("| {0,10} = {1}\n"                                   , "PROFILES", Profiles_Dict.Count)
                 ;
 
             //}}}

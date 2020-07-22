@@ -325,7 +325,7 @@ namespace Util
 
         //blic static string    CONTROL_LABEL_PROFILE       = @"\caps\ul\impr\scaps\shad PROFILE";
         public static string    CONTROL_LABEL_PROFILE       = @"\ul\b PROFILE";
-        public static string    CONTROL_LABEL_INDEX         = @"\ul\b INDEX"  ;
+        public static string    CONTROL_LABEL_INDEX         = @"\ul\b /INDEX" ;
 
         public static string    CONTROL_LABEL_EXPORT        = @"EXPORT";
         public static string    CONTROL_LABEL_EXPORT_PROFILE= @"UPDATE ";

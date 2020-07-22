@@ -1,8 +1,7 @@
 ###########################################################################################################
-### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200719:02h:11) #############################
+### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200722:18h:00) #############################
 ###########################################################################################################
-include Make_GIT
-default: clean arch tags
+:cd %:h|make view_project
 # VARS {{{
  TOP		= $(LOCAL)/STORE/DEV/PROJECTS
  APPDIR		= RTabs
@@ -15,14 +14,13 @@ default: clean arch tags
  FILE_FILTER    = sed -e '/^\.\/[^\/]*$$/d' -e 's/^\.\///' -e '/Images/d' -e '/IMAGES/d' -e '/debug/d' -e '/Debug/d' -e '/DEBUG/d'
 #}}}
 :cd %:h|:update|:only|:terminal make GITHUB
-:cd %:h|:update|:only|:terminal make links
 ################ GITHUB {{{
 :}!!find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'
 :}!!find . -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|csproj|suo)\>' | sed -e 's/^\.\/*//'
 
  GITHUB:
 	@(echo "[$@]";\
-	   FILES="RTabs_Profiles/* `find .  -type f | egrep -v '\<(vim|tags|BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|cd|obj|git|suo|exe|dll|pdb|application|lnk)\>' | sed -e 's/^\.\/*//' -e 's/ /\n/'`";\
+	   FILES="RTabs_Profiles/* `find .  -type f | egrep -v '\<(vim|tags|BAK|RTabs_Profiles|RTabs_Registry|RTabsServer_Logon_Task|_gsdata_|ini|lnk|vs|cd|obj|git|suo|exe|dll|pdb|application|lnk)\>' | sed -e 's/^\.\/*//' -e 's/ /\n/'`";\
 	   LINKS=`find R* -type l | sed -e 's/^\.\/*//' -e 's/ /\n/'`;\
 	\
 	LINKS=`echo "$$LINKS" | grep -v '.cs'`;\

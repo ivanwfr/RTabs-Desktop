@@ -1,4 +1,3 @@
-# RTabs
-windows remote control server and designer
+# RTabs-Desktop - Desktop Remote Control - Windows Server and Designer
 
-[ZIP archive on GitHub](https://github.com/ivanwfr/RTabs/archive/master.zip)
+[ZIP archive on GitHub](https://github.com/ivanwfr/RTabs-Desktop/archive/master.zip)
