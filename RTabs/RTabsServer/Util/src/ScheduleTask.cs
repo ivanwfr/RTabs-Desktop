@@ -9,6 +9,8 @@ using Util;
 // }}}
 public static class ScheduleTask
 {
+        private const string    ScheduleTask_TAG      = "ScheduleTask (200722:14h:28)";
+
     // TASK_TEMPLATE {{{
         private static string TASK_TEMPLATE = ""
         +"<?xml version=\"1.0\" encoding=\"UTF-16\"?>\n"
@@ -85,7 +87,7 @@ public static class ScheduleTask
                 ;
 
             // write script file
-            string task_file_name = Application.StartupPath + "\\Task.xml";
+            string task_file_name = Application.StartupPath + "\\RTabsServer_Logon_Task.xml";
 
             Log("AddNewTask("+taskName+"):\n"
             +"FILE=["+task_file_name+"]\n"

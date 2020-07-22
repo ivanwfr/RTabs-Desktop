@@ -1,27 +1,17 @@
-###########################################################################################################
-### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Make_GIT ### SCRIPT_TAG (200717:19h:59) #############################
-###########################################################################################################
-define COMMIT_MESSAGE
-Git init RTabs:\
-ADDING FOLDERS
-
-endef
-default: gs
-
-######################## 
+###############################################################################
+### Make_GIT_TAG (200722:17h:25) ##############################################
+###############################################################################
 :update|:only|vert terminal make git_status
 :update|:only|vert terminal make git_reset
 :update|:only|vert terminal make git_log
 :update|:only|vert terminal make git_log_p_2
 :update|:only|vert terminal make git_log_pretty
 :update|:only|vert terminal make git_log_stat
-:update|:only|vert terminal make git_add
+:update|:only|vert terminal make git_add_files
 :update|:only|vert terminal make git_commit_all_message
 :update|:only|vert terminal make git_diff_cached
 :update|:only|vert terminal make git_git_diff
 :update|:only|vert terminal make git_git_push_f
-######################## 
-
 ################ STATUS {{{
 gs git_status:
 	@echo [$@]; git status
@@ -78,7 +68,7 @@ gls git_log_stat:
 	echo "ARCHIVE";\
 	    DATE=`date '+%y%m%d'`;\
 	    ARCHIVE="$(APPDIR)_$$DATE.rar";\
-            rm -f                    ../GITHUB/$$ARCHIVE;\
+	    rm -f                    ../GITHUB/$$ARCHIVE;\
 	    : echo $(RAR)   a $(RAS) ../GITHUB/$$ARCHIVE $$FILES;\
 	    $(RAR)   a $(RAS)        ../GITHUB/$$ARCHIVE $$FILES;\
 	    $(LS)         -lt        ../GITHUB/*.rar | head -2;\
@@ -99,6 +89,12 @@ gls git_log_stat:
 #}}}
 ################ COMMIT {{{
 :make gca
+
+define COMMIT_MESSAGE
+Git init RTabs:\
+ADDING FOLDERS
+endef
+
 gca git_commit_all_message:
 	@echo "[$@]"; git commit -a -m "$(COMMIT_MESSAGE)"
 
@@ -118,7 +114,6 @@ gp git_git_push_f:
 	@echo [$@]; git push -f
 
 #}}}
-######################## 
 # GIT init RTabs {{{
 :!start explorer "https://kbroman.org/github_tutorial/pages/init.html"
 :term git init
@@ -136,7 +131,7 @@ gp git_git_push_f:
 #	git config --list
 
 #}}}
-#GOOGLE CLOUD: {{{
+# GOOGLE CLOUD: {{{
 :cd B:/Program\ Files\ (x86)/Google/Cloud\ SDK/
 :cd C:\LOCAL\DATA\ANDROID\PROJECTS\RTabsExtension
 :!start explorer "https://cloud.google.com/sdk/docs/"
@@ -228,5 +223,4 @@ gp git_git_push_f:
 # local	~/REPO/RTabsExtension (push)
 # local	~/REPO/RTabsExtension (push)
 #}}}
-
 # vim: noet ts=8 sw=8

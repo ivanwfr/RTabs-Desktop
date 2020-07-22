@@ -17,6 +17,8 @@ namespace RTabs
     public partial class MainForm   : Form, LoggerInterface
     {
         // CLASS {{{
+        private const  string   MainForm_TAG = "MainForm (200720:00h:35)";
+
         public  static  uint        UI_state            = 0;
 
         public  static  HelpForm    PopupHelpForm;
@@ -223,7 +225,7 @@ namespace RTabs
                     ;
 
                 control_index.TT
-                    = "OPEN INDEX PROFILE"
+                    = "OPEN TOP INDEX PROFILE"
                     ;
 
                 control_export.TT
@@ -1805,7 +1807,7 @@ MainForm_ResumeLayout();
         // control_index_Click {{{
         public void control_index_Click()
         {
-            Settings.LoadProfile("index");
+            Settings.LoadProfile("/index");
         }
         //}}}
         // state @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
