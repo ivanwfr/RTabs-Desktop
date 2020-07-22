@@ -1,7 +1,9 @@
 # RTabs-Desktop - Desktop Remote Control
 
  ✔ Windows Server
+ 
  ✔ Windows Designer
+ 
  … Android Client App   https://github.com/ivanwfr/RTabs-Android
 
 [ZIP archive on GitHub] https://github.com/ivanwfr/RTabs-Desktop/archive/master.zip
