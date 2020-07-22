@@ -1,5 +1,9 @@
 ###############################################################################
+<<<<<<< HEAD
 ### https://github.com/ivanwfr/RTabs-Desktop ##### Makefile_TAG (200722:18h:33)
+=======
+### https://github.com/ivanwfr/RTabs-Desktop ##### Makefile_TAG (200722:17h:52)
+>>>>>>> c65e7173283b098c47bd40314dc9e197f5a87a39
 ###############################################################################
 # VARS {{{
  ORIGIN = https://github.com/ivanwfr/RTabs-Desktop
@@ -18,6 +22,10 @@ view_project: #{{{
 links: #{{{
 	(\
 	    mkdir RTabs;\
+<<<<<<< HEAD
+=======
+	    \
+>>>>>>> c65e7173283b098c47bd40314dc9e197f5a87a39
 	    cd    RTabs;\
 	    $(JAR) xvf ../RTabs_*.zip;\
 	    \
