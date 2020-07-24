@@ -18,7 +18,7 @@ namespace Util
     public class Settings
     {
         // SETTINGS MEMBERS {{{
-        private const  string   Settings_TAG                    = "Settings (200724:16h:53)";
+        private const  string   Settings_TAG                    = "Settings (200724:19h:38)";
 
         public static bool      UseMutex                        = false;
 
@@ -508,15 +508,23 @@ namespace Util
 
                     //}}}
                     // PROFILE QUALIFIER {{{
-                    string     current_dirName = Path.GetDirectoryName( Settings.PROFILE ).Replace("\\","/");
-                    string     profile_dirName = Path.GetDirectoryName( profile_name     ).Replace("\\","/");
-                    profile_name               =  profile_name.Replace("\\","/");
+                    Log("...Settings.PROFILE=["+ Settings.PROFILE +"]");
 
-                    bool       fully_qualified
+                    string current_dirName
+                        = (Settings.PROFILE == "")
+                        ?  ""
+                        :  Path.GetDirectoryName( Settings.PROFILE ).Replace("\\","/");
+
+                    string profile_dirName
+                        =   Path.GetDirectoryName( profile_name     ).Replace("\\","/");
+
+                    profile_name
+                        =  profile_name.Replace("\\","/");
+
+                    bool  fully_qualified
                         =  (profile_name[0] == '/')
                         || (profile_dirName == current_dirName);
 
-                    Log("...Settings.PROFILE=["+ Settings.PROFILE +"]");
                     Log(".......profile_name=["+ profile_name     +"]");
                     Log("....profile_dirName=["+ profile_dirName  +"]");
                     Log("....current_dirName=["+ current_dirName  +"]");
@@ -575,6 +583,7 @@ namespace Util
                 {
                     // RESCAN FOLDER ONCE TO UPDATE CACHED LIST {{{
                     if(trial == 0) {
+                        Log( "*** LoadProfile("+ profile_name +") CLEARING [Profiles_Dict] ***\n");
                         Clear_Profiles_Dict();
                     }
                     else {

@@ -80,7 +80,7 @@ namespace RTabs
         {
             if(!ServerHelper  .IsUserAdministrator())
             {
-                string msg = "AT iNTALL TIME ONLY:\n"
+                string msg = "AT INTALL TIME ONLY:\n"
                     + "This program should be started with administrator"
                     + " rights to allow control of WINDOWS SYSTEM SETTINGS"
                     + " such as:\n"
