@@ -24,6 +24,9 @@ namespace RTabs
     public partial class DesignerForm : Form, ClientServerInterface
     {
         // DESIGNER MEMBERS {{{
+
+        private const  string   DesignerForm_TAG = "DesignerForm (200724:13h:17)";
+
         private static RTabs.MainForm MainFormInstance;
 
         private NotePane control_hide;
@@ -244,8 +247,9 @@ namespace RTabs
         {
             log("EVENTS", "control_ADB_Click");
 
-            string ip = "192.168.1.18";
-            int  port = 5555;
+            string         ip = Settings.ADB_DEVICE_IP;
+            int          port = Settings.ADB_DEVICE_PORT;
+
             control_ADB.Label = "checking ADB on "+ip+":"+port+" ...";
 
             control_ADB.Label

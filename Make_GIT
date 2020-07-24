@@ -1,5 +1,5 @@
 ###############################################################################
-### Make_GIT_TAG (200722:17h:25) ##############################################
+### Make_GIT_TAG (200724:17h:37) ##############################################
 ###############################################################################
 :cd %:h|update|:only|vert terminal make git_status
 :cd %:h|update|:only|vert terminal make git_reset
@@ -13,6 +13,7 @@
 :cd %:h|update|:only|vert terminal make git_git_diff
 :cd %:h|update|:only|vert terminal make git_git_push_f
 ################ STATUS {{{
+:make gs
 gs git_status:
 	@echo [$@]; git status
 

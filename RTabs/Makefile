@@ -1,5 +1,5 @@
 ###########################################################################################################
-### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200722:18h:00) #############################
+### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200724:17h:52) #############################
 ###########################################################################################################
 :cd %:h|make view_project
 # VARS {{{
@@ -13,7 +13,7 @@
  RAS            = -av- -c- -cfg- -ed -idp -inul -tl
  FILE_FILTER    = sed -e '/^\.\/[^\/]*$$/d' -e 's/^\.\///' -e '/Images/d' -e '/IMAGES/d' -e '/debug/d' -e '/Debug/d' -e '/DEBUG/d'
 #}}}
-:cd %:h|:update|:only|:terminal make GITHUB
+:cd %:h|update|only|set columns=999|vert terminal make GITHUB
 ################ GITHUB {{{
 :}!!find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'
 :}!!find . -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|csproj|suo)\>' | sed -e 's/^\.\/*//'
@@ -41,7 +41,7 @@
 	echo "ARCHIVE";\
 	    DATE=`date '+%y%m%d'`;\
 	    ARCHIVE="$(APPDIR)_$$DATE.zip";\
-            rm -f                    ../GITHUB/$$ARCHIVE;\
+	    rm -f                    ../GITHUB/$$ARCHIVE;\
 	    $(JAR)   Mcf             ../GITHUB/$$ARCHIVE $$FILES;\
 	    $(LS)         -lt        ../GITHUB/*.zip | head -2;\
 	    $(JAR)   tvf             ../GITHUB/$$ARCHIVE;\
@@ -52,33 +52,33 @@
 #}}}
 links:  #-------------------- LINK ------------------------------------ TARGET {{{
 	(\
-            cd RTabs;\
-            cmd /c mklink /J 'RTabsDesigner\Util'                       'Util';\
-            cmd /c mklink /J 'RTabsServer\Util'                         'Util';\
-            \
-            cmd /c mklink /H 'RTabsServer\src\MainForm.cs'              'RTabs\src\MainForm.cs';\
-            cmd /c mklink /H 'RTabsServer\src\MainForm.Designer.cs'     'RTabs\src\MainForm.Designer.cs';\
-            \
-            cmd /c mklink /H 'RTabsDesigner\src\MainForm.cs'            'RTabs\src\MainForm.cs';\
-            cmd /c mklink /H 'RTabsDesigner\src\MainForm.Designer.cs'   'RTabs\src\MainForm.Designer.cs';\
+	    cd RTabs;\
+	    cmd /c mklink /J 'RTabsDesigner\Util'                       'Util';\
+	    cmd /c mklink /J 'RTabsServer\Util'                         'Util';\
+	    \
+	    cmd /c mklink /H 'RTabsServer\src\MainForm.cs'              'RTabs\src\MainForm.cs';\
+	    cmd /c mklink /H 'RTabsServer\src\MainForm.Designer.cs'     'RTabs\src\MainForm.Designer.cs';\
+	    \
+	    cmd /c mklink /H 'RTabsDesigner\src\MainForm.cs'            'RTabs\src\MainForm.cs';\
+	    cmd /c mklink /H 'RTabsDesigner\src\MainForm.Designer.cs'   'RTabs\src\MainForm.Designer.cs';\
 	)
 
 # }}}
 arch:                                                                     #{{{
 	@(\
-            echo "cd TOP [$(TOP)]";\
+	    echo "cd TOP [$(TOP)]";\
 	    cd $(TOP);\
-            pwd;\
-            echo "APPDIR=[$(APPDIR)]";\
+	    pwd;\
+	    echo "APPDIR=[$(APPDIR)]";\
 	    FILES=`$(FIND) $(APPDIR) -type f\
 	    | sed                       \
-            -e "s/ /?/g"                \
-            \
+	    -e "s/ /?/g"                \
+	    \
 	    -e "/\/LINKS/d"		\
 	    -e "/\/bin.*/d"	        \
 	    -e "/\\obj.*/d"	        \
 	    -e "/tags/d"		\
-            \
+	    \
 	    -e "/\.application/d"	\
 	    -e "/\.dll/d"		\
 	    -e "/\.exe*/d"		\
@@ -90,15 +90,23 @@ arch:                                                                     #{{{
 	    DATE=`date '+%y%m%d'`;\
 	    ARCHIVE="$(APPDIR)_$$DATE.rar";\
 	    echo $(RAR)   a $(RAS) ARCHIVES/$$ARCHIVE $$FILES;\
-	         $(RAR)   a $(RAS) ARCHIVES/$$ARCHIVE $$FILES;\
+		 $(RAR)   a $(RAS) ARCHIVES/$$ARCHIVE $$FILES;\
 	    $(LS)       -lt ARCHIVES/*.rar | head;\
 	    $(RAR)       l  ARCHIVES/$$ARCHIVE;\
 	)#
 
 # }}}
-clean:                                                                    #{{{
-	rm -rf .vs */.vs obj */obj/
-	cd $(TOP) && rm -rf tags */tags */*/tags
+clean:                                                                         #{{{
+	@(\
+	    echo "[$@]";\
+	    cd $(TOP);\
+	    du -s -k .;\
+	    rm -rf .vs */.vs;\
+	    rm -rf obj */obj;\
+	    rm -rf t.* */t.* ../tags tags */tags */*/tags;\
+	    rm -rf t.* */t.* ../tags tags */tags */*/tags */build/;\
+	    du -s -k .;\
+	)
 
 # }}}
 help:                                                                     #{{{
@@ -107,7 +115,8 @@ help:                                                                     #{{{
 # }}}
 .PHONY: tags                                                              #{{{
 tags:
-	cd $(TOP)/$(APPDIR) && ctags -R --links=no RTabs *Designer *Server Util && wc -l tags
+	cd $(TOP)/$(APPDIR) && ctags -R --links=no --languages=-js RTabs RTabsDesigner RTabsServer Util
+	wc -l tags
 
 #}}}
 wc: # {{{
@@ -151,3 +160,5 @@ touch:  # sync link last modified time                                    #{{{
 #   tl            Set archive time to latest file
 # ---------------------------------------------------------------------
 # }}}
+
+# vim: noexpandtab ts=8 sw=8

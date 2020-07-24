@@ -17,12 +17,13 @@ namespace Util
 {
     public class Settings
     {
-        private const  string   Settings_TAG = "Settings (200720:04h:42)";
+        // SETTINGS MEMBERS {{{
+        private const  string   Settings_TAG                    = "Settings (200724:16h:53)";
 
-        public static bool UseMutex = false;
+        public static bool      UseMutex                        = false;
 
         public static long      ParseTime_Millisecond           = 0;
-        private static string   FOLD_OPEN   = "{{{";
+        private static string   FOLD_OPEN                       = "{{{";
 
         public static int       USER_TABS_MAX                   = 256;
         public static int       PALETTES_MAX                    = 256;
@@ -36,8 +37,9 @@ namespace Util
         public static int       ServiceMutexCount               = 0;
         public static string    ServiceMutexOwner               = "";
 
-        private static string   FOLD_CLOSE  = "}}}";
+        private static string   FOLD_CLOSE                      = "}}}";
 
+        //}}}
         // CLIENT-SERVER INTERNAL COMMANDS {{{
 
         // -----------------------------------  file://PROFILES_DIR/DEV/AZ-ABS-00-0100-010011_rev00.html
@@ -45,6 +47,10 @@ namespace Util
         public static string PROFILES_DIR_PATH      =                                        "RTabs_Profiles";
         // ----------------g PROFILES_DIR_PATH      = "C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Util/RTabs_Profiles";
         // -----------------------------------  file://C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Util/RTabs_Profiles/DEV/index.html
+
+        // DEVICE
+        public static string ADB_DEVICE_IP          = "192.168.1.18";
+        public static int    ADB_DEVICE_PORT        = 5555;
 
         // PROCESS
         public static string CMD_BROWSE             = "BROWSE";
@@ -502,18 +508,22 @@ namespace Util
 
                     //}}}
                     // PROFILE QUALIFIER {{{
-                    bool       fully_qualified = (profile_name[0] == '/' ) || (profile_name[0] == '\\');
-                    string     current_dirName = Path.GetDirectoryName( Settings.PROFILE );
-                    string     profile_dirName = Path.GetDirectoryName( profile_name );
+                    string     current_dirName = Path.GetDirectoryName( Settings.PROFILE ).Replace("\\","/");
+                    string     profile_dirName = Path.GetDirectoryName( profile_name     ).Replace("\\","/");
+                    profile_name               =  profile_name.Replace("\\","/");
+
+                    bool       fully_qualified
+                        =  (profile_name[0] == '/')
+                        || (profile_dirName == current_dirName);
 
                     Log("...Settings.PROFILE=["+ Settings.PROFILE +"]");
-                    Log("....current_dirName=["+ current_dirName  +"]");
                     Log(".......profile_name=["+ profile_name     +"]");
                     Log("....profile_dirName=["+ profile_dirName  +"]");
+                    Log("....current_dirName=["+ current_dirName  +"]");
                     Log("....fully_qualified=["+ fully_qualified  +"]");
 
                     //}}}
-                    // 1/2 - TRY RELATIVE TO CURRENT_DIRNAME {{{
+                    // 1/2 - TRY RELATIVE TO CURRENT_DIRNAME .. RESCAN FOLDER ONCE TO UPDATE CACHED LIST {{{
                     bool profile_loaded = false;
                     if(!fully_qualified && (current_dirName != ""))
                     {
@@ -523,19 +533,25 @@ namespace Util
                         if( Profiles_Dict.ContainsKey( relative_name ) )
                         {
                             string        filePath = Profiles_Dict[ relative_name ];
-                            Log("...LOADING RELATIVE filePath=["+ filePath +"]");
+                            Log("...LOADING RELATIVE ["+ filePath +"]");
 
                             profile_loaded         = LoadProfileFromFilePath( filePath );
 
                             if( profile_loaded )
                                 Settings.PROFILE   = relative_name;
                         }
+                        else if(trial == 0)
+                        {
+                            Log("...MISSING RELATIVE ["+ relative_name +"] .. REFRESHING [Profiles_Dict]");
+                            Clear_Profiles_Dict();
+                            continue;
+                        }
                     }
                     //}}}
-                    // 2/2 TRY ABSOLUTE {{{
-                    if(!profile_loaded )
+                    // 2/2 - TRY ABSOLUTE {{{
+                    if(!profile_loaded)
                     {
-                        if(fully_qualified)
+                        if(profile_name[0] == '/')
                             profile_name       = profile_name.Substring(1);
                         string  filePath       = Profiles_Dict[ profile_name ];
                         Log("...LOADING ABSOLUTE filePath=["+ filePath +"]");
@@ -546,12 +562,12 @@ namespace Util
                             Settings.PROFILE   = profile_name;
                     }
                     //}}}
-                    //{{{
+                    // ... - SKIP SECOND TRIAL WHEN FIRST SUCCEEDS {{{
 
-                    if( profile_loaded )
-                        Log("...profile_loaded: "+   Settings.PROFILE +"]");
+                    Log("........profile_loaded: "+ Settings.PROFILE    +"]");
+                    Log("...Profiles_Dict.Count: "+ Profiles_Dict.Count +"]");
 
-                    if(profile_loaded || (Profiles_Dict.Count > 0))  // ...no exception cleanup occured
+                    if(profile_loaded || (Profiles_Dict.Count > 0)) // ...no exception cleanup occured
                         break;                                      // ...proceed to second trial otherwise
                     //}}}
                 }
