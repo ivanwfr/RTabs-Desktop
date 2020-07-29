@@ -63,7 +63,7 @@ TAB.panel_usr028=type=SHORTCUT|xy_wh=91,24,03,03|shape=circle|color=|zoom=.39|ta
 TAB.panel_usr027=type=SHORTCUT|xy_wh=80,13,06,06|shape=circle|color=|zoom=|tag=PALETTE=ECC|text=ECC\n...Electronic Chart Color code|tt=
 TAB.panel_usr026=type=SHORTCUT|xy_wh=83,29,03,03|shape=circle|color=|zoom=|tag=OPACITY=25|text=25%|tt=
 TAB.panel_usr025=type=SHORTCUT|xy_wh=91,21,03,03|shape=circle|color=|zoom=1.65|tag=OPACITY=95|text=95%|tt=*Load_this_profile
-TAB.panel_usr024=type=SHORTCUT|xy_wh=89,00,04,04|shape=onedge|color=|zoom=|tag=PROFILE D_index|text=D_ⓘ‍|tt=
+TAB.panel_usr024=type=SHORTCUT|xy_wh=89,00,04,04|shape=onedge|color=|zoom=|tag=PROFILE DESIGN/topics|text=D_ⓘ‍|tt=
 TAB.panel_usr023=type=SHORTCUT|xy_wh=90,18,03,03|shape=circle|color=|zoom=1.65|tag=OPACITY=100|text=100%|tt=*Load_this_profile
 TAB.panel_usr022=type=SHORTCUT|xy_wh=88,28,03,03|shape=circle|color=|zoom=.39|tag=OPACITY=50|text=50%|tt=*Load_this_profile
 TAB.panel_usr021=type=SHORTCUT|xy_wh=15,18,12,04|shape=square|color=|zoom=1.0|tag=https://fr.m.wikipedia.org/wiki/%C3%89chelle_des_temps_g%C3%A9ologiques|text=Échelle_des_temps_géologiques_-_Wikipédia\n....fffff|tt=hex_color=[#333333]=[Color_[A=255,_R=51,_G=51,_B=51]]

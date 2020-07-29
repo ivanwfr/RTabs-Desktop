@@ -1,5 +1,5 @@
 ###########################################################################################################
-### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200724:17h:52) #############################
+### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200727:02h:46) #############################
 ###########################################################################################################
 :cd %:h|make view_project
 # VARS {{{
@@ -115,7 +115,7 @@ help:                                                                     #{{{
 # }}}
 .PHONY: tags                                                              #{{{
 tags:
-	cd $(TOP)/$(APPDIR) && ctags -R --links=no --languages=-js RTabs RTabsDesigner RTabsServer Util
+	cd $(TOP)/$(APPDIR) && ctags -R --links=no --languages=-js,-css,-html RTabs RTabsDesigner RTabsServer Util
 	wc -l tags
 
 #}}}

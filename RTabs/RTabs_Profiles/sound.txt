@@ -64,7 +64,7 @@ TAB.panel_usr043=type=SHORTCUT|xy_wh=45,07,06,06|shape=circle|color=|zoom=.9|tag
 TAB.panel_usr042=type=SHORTCUT|xy_wh=45,23,13,03|shape=|color=|zoom=.9|tag=PROPERTY SOUND_CLICK=Keypress.ogg|text=SOUND_CLICK=Keypress.ogg|tt=
 TAB.panel_usr041=type=SHORTCUT|xy_wh=45,26,13,03|shape=|color=|zoom=.9|tag=PROPERTY SOUND_CLICK=Spacebar.ogg|text=SOUND_CLICK=Spacebar.ogg|tt=
 TAB.panel_usr040=type=SHORTCUT|xy_wh=45,18,08,04|shape=|color=09|zoom=1|tag=PROFILE SOUNDS_TABLE|text=SOUNDS TABLE|tt=
-TAB.panel_usr039=type=SHORTCUT|xy_wh=55,01,04,04|shape=circle|color=|zoom=.9|tag=PROFILE D_index|text=D_ⓘ‍|tt=
+TAB.panel_usr039=type=SHORTCUT|xy_wh=55,01,04,04|shape=circle|color=|zoom=.9|tag=PROFILE DESIGN/topics|text=D_ⓘ‍|tt=
 TAB.panel_usr038=type=SHORTCUT|xy_wh=51,01,04,04|shape=circle|color=|zoom=.9|tag=PROFILE_SAVE #88888888|text=PROFILE\nSAVE|tt=hex_color=[#88888888]=[Color [A=136, R=136, G=136, B=136]]
 TAB.panel_usr037=type=SHORTCUT|xy_wh=49,04,11,11|shape=circle|color=|zoom=.9|tag=PALETTE|text=🎨FIRE_α95\nUse5_max0_#5|tt=
 TAB.panel_usr036=type=SHORTCUT|xy_wh=22,28,08,01|shape=|color=|zoom=1.0|tag=SOUND_CLICK=bell/triangle.ogg  |text=bell/triangle|tt=

@@ -1,5 +1,5 @@
 ###############################################################################
-### Make_GIT_TAG (200727:17h:23) ##############################################
+### Make_GIT_TAG (200729:15h:56) ##############################################
 ###############################################################################
 ### DESKTOP ########################### /LOCAL/STORE/DEV/PROJECTS/GITHUB    ###
 ### ANDROID ########################### /LOCAL/DATA/ANDROID/PROJECTS/GITHUB ###
@@ -29,11 +29,11 @@ gr git_reset:
 ################ LOG {{{
 :make gl
 gl git_log:
-	@echo [$@]; git log
+	@echo [$@]; git log | cat
 
 :make glp
 glp git_log_p_2:
-	@echo [$@]; git log -p -2
+	@echo [$@]; git log -p -2 | cat
 
 :make gg
 gg git_log_pretty:
@@ -41,7 +41,7 @@ gg git_log_pretty:
 
 :make gls
 gls git_log_stat:
-	@echo [$@]; git log --stat
+	@echo [$@]; git log --stat | cat
 
 #}}}
 ################ ADD {{{

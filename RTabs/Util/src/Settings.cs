@@ -18,7 +18,7 @@ namespace Util
     public class Settings
     {
         // SETTINGS MEMBERS {{{
-        private const  string   Settings_TAG                    = "Settings (200724:19h:38)";
+        private const  string   Settings_TAG                    = "Settings (200727:02h:48)";
 
         public static bool      UseMutex                        = false;
 
@@ -2256,7 +2256,7 @@ HELP             = {HELP}
             else if(span.Days    >  60) sb.Append(span.Days /  30 +" months ");
             else if(span.Days    >  30) sb.Append(span.Days /  30 +" month  ");
 
-            else if(span.Days    >   2) sb.Append(span.Days       +" days "  );
+            else if(span.Days    >   1) sb.Append(span.Days       +" days "  );
             else if(span.Days    >   0) sb.Append(span.Days       +" day "   );
 
             else if(span.Hours   >   1) sb.Append(span.Hours      +" hours " );
