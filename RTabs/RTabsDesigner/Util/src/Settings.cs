@@ -49,8 +49,8 @@ namespace Util
         // -----------------------------------  file://C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Util/RTabs_Profiles/DEV/index.html
 
         // DEVICE
-        public static string ADB_DEVICE_IP          = "192.168.1.18";
-        public static int    ADB_DEVICE_PORT        = 5555;
+        public static string ADB_DEVICE_IP          = "192.168.1.18";   // default fallback value
+        public static int    ADB_DEVICE_PORT        =  5555;            // when environment has none
 
         // PROCESS
         public static string CMD_BROWSE             = "BROWSE";

@@ -19,7 +19,7 @@ using System.Windows.Forms;
 using RTabs;
 using Util;
 // }}}
-namespace Util
+namespace Util // NotePane_TAG (200730:14h:57)
 {
     public class NoteRichTextBox : System.Windows.Forms.RichTextBox
     //{{{
@@ -268,7 +268,7 @@ namespace Util
         // COMM
         public static string    CONTROL_LABEL_START         = "START";
         public static string    CONTROL_LABEL_STOP          = "STOP";
-        public static string    CONTROL_LABEL_ADB           = "Check ADB-5555 status";
+        public static string    CONTROL_LABEL_ADB           = "Check ADB Device Status";
 
         // SETTINGS
         public static string    CONTROL_LABEL_SETTINGS      = "COMM Settings";

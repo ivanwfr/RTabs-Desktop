@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 using Util;
 //}}}
-namespace RTabs
+namespace RTabs // ServerForm_TAG (200730:15h:12)
 {
     public partial class   ServerForm : Form, ClientServerInterface
     {
@@ -49,23 +49,23 @@ namespace RTabs
             MainFormInstance        = mainForm;
             Server.MainFormInstance = MainFormInstance;
 
-            control_start        = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_START, NotePane.CONTROL_LABEL_START);
+            control_start           = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_START, NotePane.CONTROL_LABEL_START);
             control_start.TT
                 = "Open server connection"
                 ;
-            control_stop         = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_STOP , NotePane.CONTROL_LABEL_STOP );
+            control_stop            = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_STOP , NotePane.CONTROL_LABEL_STOP );
             control_stop.TT
                 = "Close server connection"
                 ;
-            control_hide         = MainFormInstance.tabsCollection.update_control("Hide"                     );
+            control_hide            = MainFormInstance.tabsCollection.update_control("Hide"                     );
             control_hide.TT
                 = "Minimize application Window into the System Tray"
                 ;
-            control_autostart    = MainFormInstance.tabsCollection.update_control("Auto-Start"               );
-            control_autostart.TT = "Sends the START WITH WINDOWS\nrequest to the Task Scheduler";
+            control_autostart       = MainFormInstance.tabsCollection.update_control("Auto-Start"               );
+            control_autostart.TT    = "Sends the START WITH WINDOWS\nrequest to the Task Scheduler";
 
 
-            control_ADB         = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_ADB, NotePane.CONTROL_LABEL_ADB);
+            control_ADB             = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_ADB, NotePane.CONTROL_LABEL_ADB);
             control_ADB.TT
                 = NotePane.CONTROL_LABEL_ADB
                 ;
@@ -161,7 +161,7 @@ namespace RTabs
             else if(caller == control_start         ) control_start_Click();
             else if(caller == control_stop          ) control_stop_Click();
             else if(caller == control_autostart     ) control_autostart_Click();
-            else if(caller == control_ADB           ) control_ADB_Click();
+            else if(caller == control_ADB           ) MainFormInstance.control_ADB_Click((NotePane)caller);
 
             // TYPE_SHORTCUT {{{
             //}}}
@@ -189,21 +189,6 @@ namespace RTabs
         }
         //}}}
 
-        private void control_ADB_Click()// {{{
-        {
-            log("EVENTS", "control_ADB_Click");
-
-            string ip = "192.168.1.18";
-            int  port = 5555;
-            control_ADB.Label = "checking ADB on "+ip+":"+port+" ...";
-
-            control_ADB.Label
-            ="\n"+ connect_ADB(ip, port++)
-            +"\n"+ connect_ADB(ip, port++)
-            +"\n"+ connect_ADB(ip, port++)
-            ;
-        }
-        //}}}
 
         private void control_autostart_Click()// {{{
         {
@@ -258,36 +243,6 @@ namespace RTabs
 
 
 
-        private string connect_ADB(string ip, int port)// {{{
-        {
-            if (!MainForm.OnLoad_done) return "!MainForm.OnLoad_done";
-
-            log("COMM", "connect_ADB:");
-
-
-            string          msg = "";
-            TcpClient adbClient = null;
-            try {
-                log("COMM", "...requesting connection [timeout="+Settings.CONNECT_TIMEOUT+"ms]:");
-                adbClient = new TcpClient();
-                adbClient.ConnectAsync(ip, port).Wait( Settings.CONNECT_TIMEOUT );
-            }
-            catch(Exception/*ex*/) {
-                msg = ip+":"+port+" .. ADB not listening"/*+":\n"+ex.Message*/;
-            }
-
-            if( adbClient.Connected )
-            {
-                adbClient.Close();
-                adbClient = null;
-                msg = ip+":"+port+" .. ADB IS! LISTENING";
-            }
-
-            update_COMM_DASH();
-            MainFormInstance.update_COMM_DASH( msg );
-            return msg;
-        }
-        //}}}
         //}}}
         //    PARSE   @see Server {{{
         //}}}

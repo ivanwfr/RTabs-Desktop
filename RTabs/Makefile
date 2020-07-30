@@ -1,5 +1,5 @@
 ###########################################################################################################
-### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200727:02h:46) #############################
+### C:/LOCAL/STORE/DEV/PROJECTS/RTabs/Makefile ### SCRIPT_TAG (200729:19h:30) #############################
 ###########################################################################################################
 :cd %:h|make view_project
 # VARS {{{
@@ -15,9 +15,6 @@
 #}}}
 :cd %:h|update|only|set columns=999|vert terminal make GITHUB
 ################ GITHUB {{{
-:}!!find . -type d | egrep -v '\<(vs|BAK|obj|RTabs_Profiles|RTabs_Registry|_gsdata_)\>' | sed -e 's/^\.\/*//'
-:}!!find . -type f | egrep -v '\<(BAK|RTabs_Profiles|RTabs_Registry|_gsdata_|ini|lnk|vs|obj|git|csproj|suo)\>' | sed -e 's/^\.\/*//'
-
  GITHUB:
 	@(echo "[$@]";\
 	   FILES="RTabs_Profiles/* `find .  -type f | egrep -v '\<(vim|tags|BAK|RTabs_Profiles|RTabs_Registry|RTabsServer_Logon_Task|_gsdata_|ini|lnk|vs|cd|obj|git|suo|exe|dll|pdb|application|lnk)\>' | sed -e 's/^\.\/*//' -e 's/ /\n/'`";\

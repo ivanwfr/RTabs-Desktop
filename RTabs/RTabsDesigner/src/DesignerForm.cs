@@ -19,13 +19,11 @@ using System.Windows.Forms;
 using Util;
 using System.Globalization;
 //}}}
-namespace RTabs
+namespace RTabs // DesignerForm_TAG (200730:15h:13)
 {
     public partial class DesignerForm : Form, ClientServerInterface
     {
         // DESIGNER MEMBERS {{{
-
-        private const  string   DesignerForm_TAG = "DesignerForm (200724:13h:17)";
 
         private static RTabs.MainForm MainFormInstance;
 
@@ -63,31 +61,31 @@ namespace RTabs
             MainFormInstance        = mainForm;
 
 
-            control_start        = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_START, NotePane.CONTROL_LABEL_START);
+            control_start           = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_START, NotePane.CONTROL_LABEL_START);
             control_start.TT
                 = "Open DESIGNER-SERVER connection"
                 ;
-            control_stop         = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_STOP , NotePane.CONTROL_LABEL_STOP );
+            control_stop            = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_STOP , NotePane.CONTROL_LABEL_STOP );
             control_stop.TT
                 = "Close DESIGNER-SERVER connection"
                 ;
-            control_hide         = MainFormInstance.tabsCollection.update_control("Hide"                     );
+            control_hide            = MainFormInstance.tabsCollection.update_control("Hide"                     );
             control_hide.TT
                 = "Minimize application window"
                 ;
-            control_stop_server  = MainFormInstance.tabsCollection.update_control("Stop Server"              );
+            control_stop_server     = MainFormInstance.tabsCollection.update_control("Stop Server"              );
             control_stop_server.TT
                 = "Send the stop-service request to the server (not really useful btw)"
                 ;
-            control_ADB          = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_ADB, NotePane.CONTROL_LABEL_ADB);
+            control_ADB             = MainFormInstance.tabsCollection.update_control(NotePane.CONTROL_NAME_ADB, NotePane.CONTROL_LABEL_ADB);
             control_ADB.TT
                 = NotePane.CONTROL_LABEL_ADB
                 ;
 /*
-            control_send_tabs    = MainFormInstance.tabsCollection.update_control("SEND TABS"                );
-            control_get_tabs     = MainFormInstance.tabsCollection.update_control("GET TABS"                 );
-            control_send_palettes= MainFormInstance.tabsCollection.update_control("SEND PALETTES"            );
-            control_get_palettes = MainFormInstance.tabsCollection.update_control("GET PALETTES"             );
+            control_send_tabs       = MainFormInstance.tabsCollection.update_control("SEND TABS"                );
+            control_get_tabs        = MainFormInstance.tabsCollection.update_control("GET TABS"                 );
+            control_send_palettes   = MainFormInstance.tabsCollection.update_control("SEND PALETTES"            );
+            control_get_palettes    = MainFormInstance.tabsCollection.update_control("GET PALETTES"             );
 */
         }
         //}}}
@@ -161,7 +159,7 @@ namespace RTabs
             else if(caller == control_start         ) control_start_Click();
             else if(caller == control_stop          ) control_stop_Click();
             else if(caller == control_stop_server   ) control_stop_server_Click();
-            else if(caller == control_ADB           ) control_ADB_Click();
+            else if(caller == control_ADB           ) MainFormInstance.control_ADB_Click((NotePane)caller);
 
             // TYPE_SHORTCUT {{{
             else {
@@ -241,22 +239,6 @@ namespace RTabs
 
             //disconnect();
 
-        }
-        //}}}
-        private void control_ADB_Click()// {{{
-        {
-            log("EVENTS", "control_ADB_Click");
-
-            string         ip = Settings.ADB_DEVICE_IP;
-            int          port = Settings.ADB_DEVICE_PORT;
-
-            control_ADB.Label = "checking ADB on "+ip+":"+port+" ...";
-
-            control_ADB.Label
-            ="\n "+ connect_ADB(ip, port++)
-            +"\n "+ connect_ADB(ip, port++)
-            +"\n "+ connect_ADB(ip, port++)
-            ;
         }
         //}}}
 
@@ -606,36 +588,6 @@ if(profile_name != Settings.CMD_PROFILES_TABLE) MainFormInstance.tabsCollection.
             //this.tcpClient.Close();
             update_COMM_DASH();
             MainFormInstance.update_COMM_DASH("Listen_Task started");
-        }
-        //}}}
-        private string connect_ADB(string ip, int port)// {{{
-        {
-            if (!MainForm.OnLoad_done) return "!MainForm.OnLoad_done";
-
-            log("COMM", "connect_ADB:");
-
-
-            string          msg = "";
-            TcpClient adbClient = null;
-            try {
-                log("COMM", "...requesting connection [timeout="+Settings.CONNECT_TIMEOUT+"ms]:");
-                adbClient = new TcpClient();
-                adbClient.ConnectAsync(ip, port).Wait( Settings.CONNECT_TIMEOUT );
-            }
-            catch(Exception/*ex*/) {
-                msg = ip+":"+port+" .. ADB not listening"/*+":\n"+ex.Message*/;
-            }
-
-            if( adbClient.Connected )
-            {
-                adbClient.Close();
-                adbClient = null;
-                msg = ip+":"+port+" .. ADB IS! LISTENING";
-            }
-
-            update_COMM_DASH();
-            MainFormInstance.update_COMM_DASH( msg );
-            return msg;
         }
         //}}}
         //}}}

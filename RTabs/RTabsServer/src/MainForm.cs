@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -12,12 +13,11 @@ using System.Windows.Forms;
 
 using Util;
 //}}}
-namespace RTabs
+namespace RTabs // MainForm_TAG (200730:15h:34)
 {
     public partial class MainForm   : Form, LoggerInterface
     {
         // CLASS {{{
-        private const  string   MainForm_TAG = "MainForm (200720:00h:35)";
 
         public  static  uint        UI_state            = 0;
 
@@ -638,7 +638,8 @@ MainForm_ResumeLayout();
             notifyIcon                   = new System.Windows.Forms.NotifyIcon();
             notifyIcon.Icon              = this.Icon;
             notifyIcon.Text              = Settings.APP_NAME;
-            notifyIcon.MouseDoubleClick += new MouseEventHandler( toggleUI_CB );
+            notifyIcon.MouseClick       += new MouseEventHandler( toggleUI_CB );
+          //notifyIcon.MouseDoubleClick += new MouseEventHandler( toggleUI_CB );
             notifyIcon.ContextMenu       = menu;
             notifyIcon.Visible           = true;
 
@@ -810,6 +811,62 @@ MainForm_ResumeLayout();
             saveSettings("exit");
 
             clientServerForm.ClientServerExit( caller );
+        }
+        //}}}
+        //}}}
+        //    CONNECT {{{
+
+
+
+
+        public void control_ADB_Click(NotePane control_ADB)// {{{
+        {
+            log("EVENTS", "control_ADB_Click");
+
+            // DEVICE ENVIRONMENT (REAL-TIME-UPDATE)
+            string val;
+            if(   (val = System.Environment.GetEnvironmentVariable( "ADB_DEVICE_IP"   )) != null) Settings.ADB_DEVICE_IP   =           val ;
+            if(   (val = System.Environment.GetEnvironmentVariable( "ADB_DEVICE_PORT" )) != null) Settings.ADB_DEVICE_PORT = int.Parse(val);
+
+            string         ip = Settings.ADB_DEVICE_IP;
+            int          port = Settings.ADB_DEVICE_PORT;
+
+            control_ADB.Label = "checking ADB on "+ip+":"+port+" ...";
+
+            control_ADB.Label
+            = "\n "+ connect_ADB(ip, port++)
+            + "\n "+ connect_ADB(ip, port++)
+            + "\n "+ connect_ADB(ip, port++)
+            ;
+        }
+        //}}}
+
+        private string connect_ADB(string ip, int port)// {{{
+        {
+            if (!MainForm.OnLoad_done) return "!MainForm.OnLoad_done";
+
+            log("COMM", "connect_ADB:");
+
+            string          msg = "";
+            TcpClient adbClient = null;
+            try {
+                log("COMM", "...requesting connection [timeout="+Settings.CONNECT_TIMEOUT+"ms]:");
+                adbClient = new TcpClient();
+                adbClient.ConnectAsync(ip, port).Wait( Settings.CONNECT_TIMEOUT );
+            }
+            catch(Exception/*ex*/) {
+                msg = ip+":"+port+@" ... ADB not listening"/*+":\n"+ex.Message*/;
+            }
+
+            if( adbClient.Connected )
+            {
+                adbClient.Close();
+                adbClient = null;
+                msg = ip+":"+port+@" @@@ ADB IS! LISTENING";
+            }
+
+            update_COMM_DASH( msg );
+            return msg;
         }
         //}}}
         //}}}
