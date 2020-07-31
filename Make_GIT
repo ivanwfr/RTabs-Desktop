@@ -1,9 +1,6 @@
 ###############################################################################
 ### Make_GIT_TAG (200730:16h:24) ##############################################
 ###############################################################################
-### DESKTOP ########################### /LOCAL/STORE/DEV/PROJECTS/GITHUB    ###
-### ANDROID ########################### /LOCAL/DATA/ANDROID/PROJECTS/GITHUB ###
-###############################################################################
 :cd %:h|update|:only|vert terminal make git_status
 :cd %:h|update|:only|vert terminal make git_stash_list
 :cd %:h|update|:only|vert terminal make git_stash_pop
@@ -14,6 +11,7 @@
 :cd %:h|update|:only|vert terminal make git_log_pretty
 :cd %:h|update|:only|vert terminal make git_log_stat
 :cd %:h|update|:only|vert terminal make git_git_diff
+:cd %:h|update|:only|vert terminal make git_git_diff_prev
 :cd %:h|update|:only|vert terminal make git_diff_cached
 :cd %:h|update|:only|vert terminal make git_git_push_f
 :cd %:h|update|:only|vert terminal git --help
@@ -59,10 +57,13 @@ git_log_stat:
 #}}}
 ################ DIFF {{{
 git_git_diff:
-	@echo [$@]; git diff          | cat
+	@echo [$@]; git diff            | cat
+
+git_git_diff_prev:
+	@echo [$@]; git diff HEAD^ HEAD | cat
 
 git_diff_cached:
-	@echo [$@]; git diff --cached | cat
+	@echo [$@]; git diff --cached   | cat
 #}}}
 ################ PUSH {{{
 git_git_push_f:

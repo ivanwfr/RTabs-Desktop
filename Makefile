@@ -1,15 +1,20 @@
 ###############################################################################
-### https://github.com/ivanwfr/RTabs-Desktop ##### Makefile_TAG (200722:19h:36)
+### Makefile_TAG (200731:16h:58) ### DESKTOP (GITHUB) #########################
 ###############################################################################
-# VARS {{{
- ORIGIN = https://github.com/ivanwfr/RTabs-Desktop
-    JAR = jar.exe
-#}}}
 
+### ANDROID:
+###     $APROJECTS/GITHUB/Makefile
+###     $APROJECTS/Makefile
+
+### DESKTOP:
+### ✔✔✔ $WPROJECTS/GITHUB/Makefile
+###     $WPROJECTS/Makefile
+
+ORIGIN = https://github.com/ivanwfr/RTabs-Desktop
 include Make_GIT
 
-:cd %:h|make view_project
-view_project: #{{{
+:cd %:h|silent! make view_project_on_GITHUB
+view_project_on_GITHUB: #{{{
 	explorer $(ORIGIN)
 
 #}}}
@@ -19,7 +24,7 @@ links: #{{{
 	(\
 	    mkdir RTabs;\
 	    cd    RTabs;\
-	    $(JAR) xvf ../RTabs_*.zip;\
+	    jar xvf ../RTabs_*.zip;\
 	    \
 	    :---------------- LINK ------------------------------------ TARGET;\
 	    cmd /c mklink /J 'RTabsDesigner\Util'                       'Util';\
@@ -32,6 +37,12 @@ links: #{{{
 	    cmd /c mklink /H 'RTabsDesigner\src\MainForm.Designer.cs'   'RTabs\src\MainForm.Designer.cs';\
 	    )
 	#}}}
+
+:cd %:h|up|only|set columns=999|vert terminal ++cols=150 make clean
+clean:                                                                         #{{{
+	cd RTabs && make $@
+
+# }}}
 
 ###############################################################################
 
