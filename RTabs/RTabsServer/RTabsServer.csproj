@@ -76,10 +76,11 @@
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>RTabsServer_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -161,7 +162,7 @@
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\app.manifest" />
-    <None Include="RTabsServer_TemporaryKey.pfx" />
+    <None Include="RTabs_TemporaryKey.pfx" />
     <None Include="Util\Images\WinBg.jpg" />
     <None Include="app.config" />
   </ItemGroup>
