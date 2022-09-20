@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 using Util;
 //}}}
-namespace RTabs // MainForm_TAG (200730:15h:34)
+namespace RTabs // MainForm_TAG (200813:14h:17)
 {
     public partial class MainForm   : Form, LoggerInterface
     {
@@ -831,13 +831,17 @@ MainForm_ResumeLayout();
             string         ip = Settings.ADB_DEVICE_IP;
             int          port = Settings.ADB_DEVICE_PORT;
 
-            control_ADB.Label = "checking ADB on "+ip+":"+port+" ...";
+            control_ADB.Label = "CHECKING ADB ON "+ip+" ...\n";
 
-            control_ADB.Label
-            = "\n "+ connect_ADB(ip, port++)
-            + "\n "+ connect_ADB(ip, port++)
-            + "\n "+ connect_ADB(ip, port++)
-            ;
+          //control_ADB.Label
+          //= "\n "+ connect_ADB(ip, port++)
+          //+ "\n "+ connect_ADB(ip, port++)
+          //+ "\n "+ connect_ADB(ip, port++)
+          //;
+
+            control_ADB.Label += "\n "+ connect_ADB(ip, port++);
+            control_ADB.Label += "\n "+ connect_ADB(ip, port++);
+            control_ADB.Label += "\n "+ connect_ADB(ip, port++);
         }
         //}}}
 
@@ -855,14 +859,14 @@ MainForm_ResumeLayout();
                 adbClient.ConnectAsync(ip, port).Wait( Settings.CONNECT_TIMEOUT );
             }
             catch(Exception/*ex*/) {
-                msg = ip+":"+port+@" ... ADB not listening"/*+":\n"+ex.Message*/;
+                msg =        port + @" ... ADB not listening"/*+":\n"+ex.Message*/;
             }
 
             if( adbClient.Connected )
             {
                 adbClient.Close();
                 adbClient = null;
-                msg = ip+":"+port+@" @@@ ADB IS! LISTENING";
+                msg =        port + @" @@@ ADB IS! LISTENING";
             }
 
             update_COMM_DASH( msg );
