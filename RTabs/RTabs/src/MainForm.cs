@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 using Util;
 //}}}
-namespace RTabs // MainForm_TAG (200813:14h:17)
+namespace RTabs // MainForm_TAG (220919:19h:51)
 {
     public partial class MainForm   : Form, LoggerInterface
     {
@@ -968,12 +968,13 @@ MainForm_ResumeLayout();
 
 
             // CONNECTION SETTINGS
-            Settings.IP         =             Settings.LoadSetting(Settings.SERVER_APP_NAME, "IP"         , Settings.IP              );
+//          Settings.IP         =             Settings.LoadSetting(Settings.SERVER_APP_NAME, "IP"         , Settings.IP              );
+//          Settings.MAC        =             Settings.LoadSetting(Settings.SERVER_APP_NAME, "MAC"         , Settings.MAC              );
+//          Settings.SUBNET     =             Settings.LoadSetting(Settings.SERVER_APP_NAME, "SUBNET"         , Settings.SUBNET              );
             Settings.Port       =  int.Parse( Settings.LoadSetting(Settings.SERVER_APP_NAME, "Port"       , Settings.Port.ToString()));
             Settings.Password   =             Settings.LoadSetting(Settings.SERVER_APP_NAME, "Password"   , Settings.Password        );
-            Settings.MAC        =             Settings.LoadSetting(Settings.SERVER_APP_NAME, "MAC"         , Settings.MAC              );
-            Settings.SUBNET     =             Settings.LoadSetting(Settings.SERVER_APP_NAME, "SUBNET"         , Settings.SUBNET              );
 
+            // IP MAC AND SUBNET (dynamic evaluation only) (220919)
             if(Settings.IP     == "") Settings.IP     = Netsh.GetIP();
             if(Settings.MAC    == "") Settings.MAC    = Netsh.GetMAC( Netsh.GetIPAddress( Settings.IP ) );
             if(Settings.SUBNET == "") Settings.SUBNET = Netsh.GetSUBNET();
