@@ -18,7 +18,7 @@ using System.Windows.Forms;
 
 using Util;
 //}}}
-namespace RTabs // ServerForm_TAG (200730:15h:12)
+namespace RTabs // ServerForm_TAG (220514:20h:04)
 {
     public partial class   ServerForm : Form, ClientServerInterface
     {
@@ -78,7 +78,7 @@ namespace RTabs // ServerForm_TAG (200730:15h:12)
         //}}}
         public void ClientServerOnLoad() // {{{
         {
-            if(!ServerHelper  .IsUserAdministrator())
+/*          if(!ServerHelper  .IsUserAdministrator())
             {
                 string msg = "AT INTALL TIME ONLY:\n"
                     + "This program should be started with administrator"
@@ -89,7 +89,7 @@ namespace RTabs // ServerForm_TAG (200730:15h:12)
                     ;
                 MessageBox.Show(msg, Settings.APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
+*/
             if(Settings.Settings_saved) MainFormInstance.set_settings_state( false );
             else                        MainFormInstance.set_settings_state( true  );
         }
