@@ -18,13 +18,13 @@ Compiled Executables included under the main folder
 ### 200730:
 * TRAY-NOTIFY-ICON OPEN-CLOSE .. from DOUBLE to SINGLE click
 * ADB-TEST-BUTTON control_ADB_Click .. moved into MainForm.cs
-** Reading Environment for ADB_DEVICE_IP   [default: 192.168.1.18]
-** Reading Environment for ADB_DEVICE_PORT [default: 555] 
+* Reading Environment for ADB_DEVICE_IP   [default: 192.168.1.18]
+* Reading Environment for ADB_DEVICE_PORT [default: 555] 
 
 ### 220920:
 * Those 2 folders should be set as junctions to RTabs/Util:
-** RTabs/RTabsDesigner/Util
-** RTabs/RTabsServer/Util
+* RTabs/RTabsDesigner/Util
+* RTabs/RTabsServer/Util
 
 * txt files in folder RTabs/Util/RTabs_profiles are to copied into %USERPROFILE%\Documents\RTabs\Profiles
 
